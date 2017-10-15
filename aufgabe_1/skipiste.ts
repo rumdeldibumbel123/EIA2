@@ -4,35 +4,35 @@
 //Datum: 15.10.2017
 //    
 //Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
-window.addEventListener("load", skipiste); 
+window.addEventListener("load", ski); 
 
 
-function skipiste(): void {
+function ski(): void {
     (document.getElementsByTagName("canvas")[0]); 
     let canvas: HTMLCanvasElement = document.getElementsByTagName("canvas")[0];
     let crc2: CanvasRenderingContext2D = canvas.getContext("2d");  
                                                
     //Himmel
-        crc2.fillStyle = "#004eff";
+        crc2.fillStyle = "#26e2dc";
         crc2.fillRect(0,0,800,600);
  
-    //Berg 1
-        crc2.fillStyle = "#c9c9c9";
+    //Berg2
+        crc2.fillStyle = "#a9a9a9";
         crc2.beginPath(); 
         crc2.moveTo(250 , 100); //höhe
         crc2.lineTo(425, 450);
         crc2.lineTo(75, 450);
         crc2.fill();
     
-    //Berg 2
-        crc2.fillStyle = "#7b7b7b";
+    //Berg3
+        crc2.fillStyle = "#a9a9a9";
         crc2.beginPath();
         crc2.moveTo(450 , 10); //höhe
         crc2.lineTo(625, 450);
         crc2.lineTo(275, 450);
         crc2.fill();
  
-     //Wolke 1  
+     //Wolke1  
         crc2.fillStyle = "#ffffff";
         crc2.beginPath();
         crc2.arc(700,195,30,0,2*Math.PI);
@@ -44,7 +44,7 @@ function skipiste(): void {
         crc2.arc(760,195,30,0,2*Math.PI);
         crc2.fill();   
     
-     //Wolke 2 
+     //Wolke2 
         crc2.fillStyle = "#ffffff";
         crc2.beginPath();
         crc2.arc(600,100,30,0,2*Math.PI);
@@ -56,7 +56,7 @@ function skipiste(): void {
         crc2.arc(660,100,30,0,2*Math.PI);
         crc2.fill(); 
     
-    //Wolke 3 
+    //Wolke3 
         crc2.fillStyle = "#ffffff";
         crc2.beginPath();
         crc2.arc(500,170,30,0,2*Math.PI);
@@ -69,7 +69,7 @@ function skipiste(): void {
         crc2.fill(); 
     
      //Skilift
-        crc2.fillStyle = "343434"; //Seilbahn
+        crc2.fillStyle = "000000"; //Seilbahn
         crc2.beginPath();
         crc2.moveTo(0, 100);
         crc2.lineTo(800, 370);
@@ -80,7 +80,7 @@ function skipiste(): void {
         crc2.lineTo(90,150);
         crc2.stroke();
         
-        crc2.fillStyle = "#191919";
+        crc2.fillStyle = "#303030";
         crc2.beginPath(); //Gondel
         crc2.moveTo(50,135);
         crc2.lineTo(130, 160); //Dach der Gondel
@@ -89,7 +89,7 @@ function skipiste(): void {
         crc2.lineTo(50, 145); //Linke Wand
         crc2.fill();
        
-    //Baum 1
+    //Baum1
         crc2.fillStyle = "#a52a2a";
         crc2.fillRect(550,275,20,150);    
         crc2.fillStyle = "#008000";
@@ -109,7 +109,7 @@ function skipiste(): void {
         crc2.lineTo(560, 250);
         crc2.fill(); 
     
-    //Baum 2
+    //Baum2
         crc2.fillStyle = "#a52a2a"; 
         crc2.fillRect(400,230,20,150);    
         crc2.fillStyle = "#008000";
@@ -140,4 +140,4 @@ function skipiste(): void {
         crc2.lineTo( 800, 500);
         crc2.lineTo( -800, 500); 
         crc2.fill(); 
-}}
+}
