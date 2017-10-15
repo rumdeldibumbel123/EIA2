@@ -13,14 +13,14 @@ function ski() {
     crc2.fillStyle = "#004ae0";
     crc2.fillRect(0, 0, 800, 600);
     //Berg2
-    crc2.fillStyle = "#a9a9a9";
+    crc2.fillStyle = "#c1c1c1";
     crc2.beginPath();
     crc2.moveTo(250, 100); //h�he
     crc2.lineTo(425, 450);
     crc2.lineTo(75, 450);
     crc2.fill();
     //Berg3
-    crc2.fillStyle = "#a9a9a9";
+    crc2.fillStyle = "#929292";
     crc2.beginPath();
     crc2.moveTo(450, 10); //h�he
     crc2.lineTo(625, 450);
@@ -60,7 +60,7 @@ function ski() {
     crc2.arc(560, 170, 30, 0, 2 * Math.PI);
     crc2.fill();
     //Skilift
-    crc2.fillStyle = "000000"; //Seilbahn
+    crc2.fillStyle = "424242"; //Seilbahn
     crc2.beginPath();
     crc2.moveTo(0, 100);
     crc2.lineTo(800, 370);
