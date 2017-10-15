@@ -15,6 +15,22 @@ function ski(): void {
     //Himmel
         crc2.fillStyle = "#004ae0";
         crc2.fillRect(0,0,800,600);
+    
+    //Berg2 (Hintergrund)
+        crc2.fillStyle = "#666666";
+        crc2.beginPath(); 
+        crc2.moveTo(250 , 100); //höhe
+        crc2.lineTo(425, 450);
+        crc2.lineTo(75, 450);
+        crc2.fill();
+    
+    //Berg3 (Hintergrund)
+        crc2.fillStyle = "#434343";
+        crc2.beginPath();
+        crc2.moveTo(450 , 10); //höhe
+        crc2.lineTo(625, 450);
+        crc2.lineTo(275, 450);
+        crc2.fill();
  
      //Wolke1  
         crc2.fillStyle = "#ffffff";
@@ -104,20 +120,5 @@ function ski(): void {
         crc2.lineTo( 800, 500);
         crc2.lineTo( -800, 500); 
         crc2.fill(); 
-    
-    //Berg2
-        crc2.fillStyle = "#666666";
-        crc2.beginPath(); 
-        crc2.moveTo(250 , 100); //höhe
-        crc2.lineTo(425, 450);
-        crc2.lineTo(75, 450);
-        crc2.fill();
-    
-    //Berg3
-        crc2.fillStyle = "#434343";
-        crc2.beginPath();
-        crc2.moveTo(450 , 10); //höhe
-        crc2.lineTo(625, 450);
-        crc2.lineTo(275, 450);
-        crc2.fill();
+ 
 }
