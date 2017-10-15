@@ -10,7 +10,7 @@ function ski() {
     var canvas = document.getElementsByTagName("canvas")[0];
     var crc2 = canvas.getContext("2d");
     //Himmel
-    crc2.fillStyle = "#26e2dc";
+    crc2.fillStyle = "#004ae0";
     crc2.fillRect(0, 0, 800, 600);
     //Berg2
     crc2.fillStyle = "#a9a9a9";
