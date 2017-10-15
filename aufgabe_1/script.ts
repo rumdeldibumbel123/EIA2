@@ -1,95 +1,143 @@
-//let html : HTMLCanvasElement = document.getElementsByTagName("canvas")[0];
- var canvas: HTMLCanvasElement;
-var ctx: CanvasRenderingContext2D; 
-var baume : number = 4;
-var wolke : number = 2;
-var berge : number = 4;
+//Aufgabe: Aufgabe 1
+//Name: Daniel Sand
+//Matrikel: 255649
+//Datum: 15.10.2017
+//    
+//Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
+window.addEventListener("load", skipiste); 
 
-window.onload = () => {
-   canvas = <HTMLCanvasElement>document.getElementById('cnvs');
-   ctx = canvas.getContext("2d");
-    himmel();
-    for(let i:number = 0; i < berge; i++){
-         berg(Math.round(Math.random()*100+i*100),Math.round(Math.random()*100));
-        }
-    
-    lieft(0,0); //benutze ich für den Lieft 
-        for(let i:number = 0; i < wolke; i++){
-         wolken(200+i*300,50+i*20);
-        }
-    pieste(0,50);
-    lieft(0,0); //benutze ich für den Lieft 
-        for(let i:number = 0; i < baume; i++){
-         baum(Math.round(Math.random()*50+i*200),Math.round(Math.random()*100+400));
-        }
-    
-  
-}
-function lieft(x :number,y:number) : void{
-    
-      ctx.beginPath();
-      ctx.moveTo(x, y);
-      ctx.lineTo(800, 550);
-      ctx.lineWidth = 2;
 
-      ctx.strokeStyle = 'black';
-      ctx.stroke();
-      ctx.fillStyle = "grey";
-    ctx.fillRect(x+250, y+170, 10, 100);
-      ctx.fillRect(x+200, y+200, 100, 100);
-    ctx.fillStyle = "white";
-    ctx.fillRect(x+210, y+210, 80, 80);
-
+function skipiste(): void {
+    (document.getElementsByTagName("canvas")[0]); 
+    let canvas: HTMLCanvasElement = document.getElementsByTagName("canvas")[0];
+    let crc2: CanvasRenderingContext2D = canvas.getContext("2d");  
+                                               
+    //Himmel
+        crc2.fillStyle = "#004eff";
+        crc2.fillRect(0,0,800,600);
+ 
+    //Berg 1
+        crc2.fillStyle = "#c9c9c9";
+        crc2.beginPath(); 
+        crc2.moveTo(250 , 100); //höhe
+        crc2.lineTo(425, 450);
+        crc2.lineTo(75, 450);
+        crc2.fill();
     
+    //Berg 2
+        crc2.fillStyle = "#7b7b7b";
+        crc2.beginPath();
+        crc2.moveTo(450 , 10); //höhe
+        crc2.lineTo(625, 450);
+        crc2.lineTo(275, 450);
+        crc2.fill();
+ 
+     //Wolke 1  
+        crc2.fillStyle = "#ffffff";
+        crc2.beginPath();
+        crc2.arc(700,195,30,0,2*Math.PI);
+        crc2.fill(); 
+        crc2.beginPath();
+        crc2.arc(730,185,30,0,2*Math.PI);
+        crc2.fill(); 
+        crc2.beginPath();
+        crc2.arc(760,195,30,0,2*Math.PI);
+        crc2.fill();   
     
-}
-function pieste(x :number,y:number) : void{
+     //Wolke 2 
+        crc2.fillStyle = "#ffffff";
+        crc2.beginPath();
+        crc2.arc(600,100,30,0,2*Math.PI);
+        crc2.fill(); 
+        crc2.beginPath();
+        crc2.arc(630,90,30,0,2*Math.PI);
+        crc2.fill(); 
+        crc2.beginPath();
+        crc2.arc(660,100,30,0,2*Math.PI);
+        crc2.fill(); 
     
-      ctx.beginPath();
-      ctx.moveTo(x, y);
-      ctx.lineTo(800, 600);
-      ctx.lineTo(0, 600)
-      ctx.lineWidth = 2;
-
-    ctx.fillStyle = "white";
-    ctx.fill();
-      ctx.strokeStyle = 'black';
-      ctx.stroke();
-}
-function himmel() : void{
-          ctx.fillStyle = "#98f5ff";
-   ctx.fillRect(0, 0, 800, 600);
-
-}
-function wolken(x :number,y:number) : void{
-
-       ctx.beginPath();
-   ctx.fillStyle = "blue";
-   ctx.arc(x, y, 50, 0, 2 * Math.PI);
-    ctx.arc(x+50, y, 50, 0, 2 * Math.PI);
-   ctx.fill();
+    //Wolke 3 
+        crc2.fillStyle = "#ffffff";
+        crc2.beginPath();
+        crc2.arc(500,170,30,0,2*Math.PI);
+        crc2.fill(); 
+        crc2.beginPath();
+        crc2.arc(530,160,30,0,2*Math.PI);
+        crc2.fill(); 
+        crc2.beginPath();
+        crc2.arc(560,170,30,0,2*Math.PI);
+        crc2.fill(); 
     
-   
-}
-function berg(x :number,y:number) : void{
-    ctx.beginPath();
-    ctx.moveTo(x, y);
-    ctx.lineWidth = 1;
-    ctx.lineTo(x+400, 600);
-    ctx.lineTo(x-400, 600);
-    ctx.fillStyle = "#666";
-    ctx.fill();
-        ctx.stroke();
+     //Skilift
+        crc2.fillStyle = "343434"; //Seilbahn
+        crc2.beginPath();
+        crc2.moveTo(0, 100);
+        crc2.lineTo(800, 370);
+        crc2.stroke();
+        
+        crc2.beginPath(); //Halteseil der Gondel
+        crc2.moveTo(90,130);
+        crc2.lineTo(90,150);
+        crc2.stroke();
+        
+        crc2.fillStyle = "#191919";
+        crc2.beginPath(); //Gondel
+        crc2.moveTo(50,135);
+        crc2.lineTo(130, 160); //Dach der Gondel
+        crc2.lineTo(130, 200); //Rechte Wand
+        crc2.lineTo(50, 175); //Boden
+        crc2.lineTo(50, 145); //Linke Wand
+        crc2.fill();
+       
+    //Baum 1
+        crc2.fillStyle = "#a52a2a";
+        crc2.fillRect(550,275,20,150);    
+        crc2.fillStyle = "#008000";
+        crc2.beginPath();
+        crc2.moveTo(490, 360); 
+        crc2.lineTo(630, 360);
+        crc2.lineTo(560, 310);
+        crc2.fill(); 
+        crc2.beginPath();
+        crc2.moveTo(510, 330); 
+        crc2.lineTo(610, 330);
+        crc2.lineTo(560, 280);
+        crc2.fill(); 
+        crc2.beginPath();
+        crc2.moveTo(530, 300); 
+        crc2.lineTo(590, 300);
+        crc2.lineTo(560, 250);
+        crc2.fill(); 
     
-   
-}
-function baum(x :number,y:number) : void{
-    
-      ctx.fillStyle = "brown";
-   ctx.fillRect(x, y, 50, 100);
-
-      ctx.beginPath();
-   ctx.fillStyle = "green";
-   ctx.arc(x+25, y-20, 50, 0, 2 * Math.PI);
-   ctx.fill();
-}
+    //Baum 2
+        crc2.fillStyle = "#a52a2a"; 
+        crc2.fillRect(400,230,20,150);    
+        crc2.fillStyle = "#008000";
+        crc2.beginPath();
+        crc2.moveTo(340, 315); 
+        crc2.lineTo(480, 315);
+        crc2.lineTo(410, 265);
+        crc2.fill(); 
+        crc2.beginPath();
+        crc2.moveTo(360, 285); 
+        crc2.lineTo(460, 285);
+        crc2.lineTo(410, 235);
+        crc2.fill(); 
+        crc2.beginPath();
+        crc2.moveTo(380, 255); 
+        crc2.lineTo(440, 255);
+        crc2.lineTo(410, 205);
+        crc2.fill();
+     
+    //Boden  
+        crc2.fillStyle = "#d7e4e5";
+        crc2.fillRect(0,500,800,200);
+        
+    //Berg
+        crc2.fillStyle = "#d7e4e5";
+        crc2.beginPath(); 
+        crc2.moveTo( 0, 230); 
+        crc2.lineTo( 800, 500);
+        crc2.lineTo( -800, 500); 
+        crc2.fill(); 
+}}

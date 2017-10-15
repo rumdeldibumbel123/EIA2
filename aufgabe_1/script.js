@@ -11,7 +11,7 @@ window.onload = function () {
     for (var i = 0; i < berge; i++) {
         berg(Math.round(Math.random() * 100 + i * 100), Math.round(Math.random() * 100));
     }
-    lieft(0, 0); //benutze ich f�r den Lieft 
+    lieft(0, 0); //benutze ich f�r den Lift 
     for (var i = 0; i < wolke; i++) {
         wolken(200 + i * 300, 50 + i * 20);
     }
