@@ -78,9 +78,9 @@ function ski() {
     crc2.lineTo(50, 145); //Linke Wand
     crc2.fill();
     //Baum 1
-    crc2.fillStyle = "#005518";
+    crc2.fillStyle = "#342c22";
     crc2.fillRect(550, 275, 20, 150);
-    crc2.fillStyle = "#008000";
+    crc2.fillStyle = "#005518";
     crc2.beginPath();
     crc2.moveTo(490, 360);
     crc2.lineTo(630, 360);
@@ -96,24 +96,24 @@ function ski() {
     crc2.lineTo(590, 300);
     crc2.lineTo(560, 250);
     crc2.fill();
-    //Baum2
-    crc2.fillStyle = "#a52a2a";
-    crc2.fillRect(400, 230, 20, 150);
-    crc2.fillStyle = "#008000";
+    //Baum 2
+    crc2.fillStyle = "#342c22";
+    crc2.fillRect(550, 275, 20, 150);
+    crc2.fillStyle = "#005518";
     crc2.beginPath();
-    crc2.moveTo(340, 315);
-    crc2.lineTo(480, 315);
-    crc2.lineTo(410, 265);
+    crc2.moveTo(490, 360);
+    crc2.lineTo(630, 360);
+    crc2.lineTo(560, 310);
     crc2.fill();
     crc2.beginPath();
-    crc2.moveTo(360, 285);
-    crc2.lineTo(460, 285);
-    crc2.lineTo(410, 235);
+    crc2.moveTo(510, 330);
+    crc2.lineTo(610, 330);
+    crc2.lineTo(560, 280);
     crc2.fill();
     crc2.beginPath();
-    crc2.moveTo(380, 255);
-    crc2.lineTo(440, 255);
-    crc2.lineTo(410, 205);
+    crc2.moveTo(530, 300);
+    crc2.lineTo(590, 300);
+    crc2.lineTo(560, 250);
     crc2.fill();
     //Boden  
     crc2.fillStyle = "#d7e4e5";
