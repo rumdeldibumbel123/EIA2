@@ -77,8 +77,8 @@ function ski() {
     crc2.lineTo(50, 175); //Boden
     crc2.lineTo(50, 145); //Linke Wand
     crc2.fill();
-    //Baum1
-    crc2.fillStyle = "#a52a2a";
+    //Baum 1
+    crc2.fillStyle = "#005518";
     crc2.fillRect(550, 275, 20, 150);
     crc2.fillStyle = "#008000";
     crc2.beginPath();
