@@ -1,9 +1,10 @@
-//Aufgabe: Aufgabe 1
+//Aufgabe: Aufgabe 2
 //Name: Daniel Sand
 //Matrikel: 255649
 //Datum: 15.10.2017
 //    
 //Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
+
 window.addEventListener("load", ski); 
 
 
