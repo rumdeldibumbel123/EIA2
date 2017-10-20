@@ -85,10 +85,10 @@ var L02;
         crc2.lineTo(800, 500);
         crc2.lineTo(-800, 500);
         crc2.fill();
-        // 10 Dreiecke an zuf�lliger Position zwischen 150 und 250 horizontal und 200 und 260 vertikal
+        // 10 Tannen an zuf�lliger Position zwischen 40 und 300 horizontal und 200 und 260 vertikal
         for (var i = 0; i < 10; i++) {
-            var x = 150 + Math.random() * 100;
-            var y = 200 + Math.random() * 60;
+            var x = 40 + Math.random() * 300;
+            var y = 400 + Math.random() * 700;
             drawTriangle(x, y, "#00FFFF");
         }
     }
