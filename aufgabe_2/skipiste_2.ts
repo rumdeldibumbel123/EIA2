@@ -19,17 +19,7 @@ namespace L02 {
         crc2.lineTo(400, 300);
         crc2.stroke();
  
-        drawTriangle(200, 100, "#FF0000");
-        drawTriangle(230, 100, "#00FF00");
-        drawTriangle(200, 130, "#FF00FF");
-        drawTriangle(180, 120, "#FFFF00");
-
-
-        // 30 Dreiecke in einer Reihe
-        for (let i: number = 0; i < 30; i++) {
-            drawTriangle(20 + i * 20, 20, "#FFFFFF");
-        }
-
+        
         // 10 Dreiecke an zufälliger Position zwischen 150 und 250 horizontal und 200 und 260 vertikal
         for (let i: number = 0; i < 10; i++) {
             let x: number = 150 + Math.random() * 100;
