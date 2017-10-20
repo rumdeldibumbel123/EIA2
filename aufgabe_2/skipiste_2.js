@@ -76,10 +76,10 @@ var L02;
         crc2.lineTo(50, 145); //Linke Wand
         crc2.fill();
         //Boden  
-        crc2.fillStyle = "#f2f2f2";
+        crc2.fillStyle = "#ffffff";
         crc2.fillRect(0, 500, 800, 200);
         //Berg
-        crc2.fillStyle = "#8e8e8e";
+        crc2.fillStyle = "#ffffff";
         crc2.beginPath();
         crc2.moveTo(0, 230);
         crc2.lineTo(800, 500);
