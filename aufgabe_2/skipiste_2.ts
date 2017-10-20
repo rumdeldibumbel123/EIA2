@@ -101,7 +101,7 @@ namespace L02 {
 
         // 10 Tannen an zufälliger Position zwischen 40 und 300 horizontal und 200 und 260 vertikal
         for (let i: number = 0; i < 10; i++) {
-            let x: number = 300 + Math.random() * 300;
+            let x: number = 40 + Math.random() * 300;
             let y: number = 400 + Math.random() * 300;
             drawTriangle(x, y, "#00FFFF");
         }
