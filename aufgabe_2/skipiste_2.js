@@ -87,8 +87,8 @@ var L02;
         crc2.fill();
         // 10 Tannen an zuf�lliger Position zwischen 40 und 300 horizontal und 200 und 260 vertikal
         for (var i = 0; i < 10; i++) {
-            var x = 40 + Math.random() * 300;
-            var y = 400 + Math.random() * 700;
+            var x = 10 + Math.random() * 400;
+            var y = 400 + Math.random() * 600;
             drawTriangle(x, y, "#00FFFF");
         }
     }
