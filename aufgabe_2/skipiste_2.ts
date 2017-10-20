@@ -9,92 +9,36 @@ namespace L02 {
         crc2 = canvas.getContext("2d");
         console.log(crc2);
 
-       //Himmel
-        crc2.fillStyle = "#004ae0";
-        crc2.fillRect(0,0,800,600);
-    
-    //Berg2 (Hintergrund)
-        crc2.fillStyle = "#666666";
-        crc2.beginPath(); 
-        crc2.moveTo(250 , 100); //höhe
-        crc2.lineTo(425, 450);
-        crc2.lineTo(75, 450);
-        crc2.fill();
-    
-    //Berg3 (Hintergrund)
-        crc2.fillStyle = "#434343";
-        crc2.beginPath();
-        crc2.moveTo(450 , 10); //höhe
-        crc2.lineTo(625, 450);
-        crc2.lineTo(275, 450);
-        crc2.fill();
- 
-     //Wolke1  
-        crc2.fillStyle = "#ffffff";
-        crc2.beginPath();
-        crc2.arc(700,195,30,0,2*Math.PI);
-        crc2.fill(); 
-        crc2.beginPath();
-        crc2.arc(730,185,30,0,2*Math.PI);
-        crc2.fill(); 
-        crc2.beginPath();
-        crc2.arc(760,195,30,0,2*Math.PI);
-        crc2.fill();   
-    
-     //Wolke2 
-        crc2.fillStyle = "#ffffff";
-        crc2.beginPath();
-        crc2.arc(600,100,30,0,2*Math.PI);
-        crc2.fill(); 
-        crc2.beginPath();
-        crc2.arc(630,90,30,0,2*Math.PI);
-        crc2.fill(); 
-        crc2.beginPath();
-        crc2.arc(660,100,30,0,2*Math.PI);
-        crc2.fill(); 
-    
-    //Wolke3 
-        crc2.fillStyle = "#ffffff";
-        crc2.beginPath();
-        crc2.arc(500,170,30,0,2*Math.PI);
-        crc2.fill(); 
-        crc2.beginPath();
-        crc2.arc(530,160,30,0,2*Math.PI);
-        crc2.fill(); 
-        crc2.beginPath();
-        crc2.arc(560,170,30,0,2*Math.PI);
-        crc2.fill(); 
-    
-     //Skilift
-        crc2.fillStyle = "424242"; //Seilbahn
-        crc2.beginPath();
-        crc2.moveTo(0, 100);
-        crc2.lineTo(800, 370);
-        crc2.stroke();
-        
-        crc2.beginPath(); //Halteseil der Gondel
-        crc2.moveTo(90,130);
-        crc2.lineTo(90,150);
-        crc2.stroke();
-        
-        crc2.fillStyle = "#303030";
-        crc2.beginPath(); //Gondel
-        crc2.moveTo(50,135);
-        crc2.lineTo(130, 160); //Dach der Gondel
-        crc2.lineTo(130, 200); //Rechte Wand
-        crc2.lineTo(50, 175); //Boden
-        crc2.lineTo(50, 145); //Linke Wand
-        crc2.fill();
+        //Background
+        crc2.fillStyle = "#ff0000";
+        crc2.fillRect(0, 0, 400, 300);
 
-        // 7 Bäume an zufälliger Position zwischen 150 und 250 horizontal und 200 und 260 vertikal
-        for (let i: number = 0; i < 7; i++) {
+        // Line
+        crc2.beginPath();
+        crc2.moveTo(0, 0);
+        crc2.lineTo(400, 300);
+        crc2.stroke();
+ 
+        drawTriangle(200, 100, "#FF0000");
+        drawTriangle(230, 100, "#00FF00");
+        drawTriangle(200, 130, "#FF00FF");
+        drawTriangle(180, 120, "#FFFF00");
+
+
+        // 30 Dreiecke in einer Reihe
+        for (let i: number = 0; i < 30; i++) {
+            drawTriangle(20 + i * 20, 20, "#FFFFFF");
+        }
+
+        // 10 Dreiecke an zufälliger Position zwischen 150 und 250 horizontal und 200 und 260 vertikal
+        for (let i: number = 0; i < 10; i++) {
             let x: number = 150 + Math.random() * 100;
             let y: number = 200 + Math.random() * 60;
-            drawtree(x, y, "#00FFFF");
+            drawTriangle(x, y, "#00FFFF");
         }
     }
 
-    function drawtree(_x: number, _y: number, _color_tree: string ): void {
+    function drawTriangle(_x: number, _y: number, _color: string): void {
         //Tanne
         crc2.beginPath();
         crc2.moveTo(_x, _y);
@@ -110,8 +54,11 @@ namespace L02 {
         crc2.lineTo(_x - 20, _y + 0);
         crc2.closePath();
         crc2.stroke();
-        crc2.fillStyle = _color_tree;
+        crc2.fillStyle = _color;
         crc2.fill();
     }
 
 }
+
+
+        
