@@ -29,42 +29,6 @@ namespace L02 {
         crc2.lineTo(275, 450);
         crc2.fill();
 
-        //Wolke1  
-        crc2.fillStyle = "#ffffff";
-        crc2.beginPath();
-        crc2.arc(700, 195, 30, 0, 2 * Math.PI);
-        crc2.fill();
-        crc2.beginPath();
-        crc2.arc(730, 185, 30, 0, 2 * Math.PI);
-        crc2.fill();
-        crc2.beginPath();
-        crc2.arc(760, 195, 30, 0, 2 * Math.PI);
-        crc2.fill();
-
-        //Wolke2 
-        crc2.fillStyle = "#ffffff";
-        crc2.beginPath();
-        crc2.arc(600, 100, 30, 0, 2 * Math.PI);
-        crc2.fill();
-        crc2.beginPath();
-        crc2.arc(630, 90, 30, 0, 2 * Math.PI);
-        crc2.fill();
-        crc2.beginPath();
-        crc2.arc(660, 100, 30, 0, 2 * Math.PI);
-        crc2.fill();
-
-        //Wolke3 
-        crc2.fillStyle = "#ffffff";
-        crc2.beginPath();
-        crc2.arc(500, 170, 30, 0, 2 * Math.PI);
-        crc2.fill();
-        crc2.beginPath();
-        crc2.arc(530, 160, 30, 0, 2 * Math.PI);
-        crc2.fill();
-        crc2.beginPath();
-        crc2.arc(560, 170, 30, 0, 2 * Math.PI);
-        crc2.fill();
-
         //Skilift
         crc2.fillStyle = "424242"; //Seilbahn
         crc2.beginPath();
@@ -99,20 +63,79 @@ namespace L02 {
         crc2.fill();
 
 
-        // 10 Tannen an zufälliger Position zwischen 40 und 300 horizontal und 200 und 260 vertikal
+        // 10 Tannen an zufälliger Position zwischen 20 und 420 horizontal und 350 und 600 vertikal
         for (let i: number = 0; i < 10; i++) {
             let x: number = 20 + Math.random() * 400;
-            let y: number = 300 + Math.random() * 400;
-            drawTriangle(x, y, "#00FFFF");
+            let y: number = 350 + Math.random() * 250;
+            drawtree(x, y, "#004305");
+        }
+        
+        // Sonne an zufälliger Position zwischen 600 und 750 horizontal und 350 und 600 vertikal
+        for (let i: number = 0; i < 1; i++) {
+            let x: number = 600 + Math.random() * 150;
+            let y: number = 50 + Math.random() * 150;
+            drawsun(x, y, "#FFF800");
+        }
+        
+        //Wolke 
+        crc2.fillStyle = "#ffffff";
+        crc2.beginPath();
+        crc2.arc(700, 195, 30, 0, 2 * Math.PI);
+        crc2.fill();
+        crc2.beginPath();
+        crc2.arc(730, 185, 30, 0, 2 * Math.PI);
+        crc2.fill();
+        crc2.beginPath();
+        crc2.arc(760, 195, 30, 0, 2 * Math.PI);
+        crc2.fill();
+        
+        // Schneeflocken an zufälliger Position zwischen 20 und 780 horizontal und 20 und 580 vertikal
+        for (let i: number = 0; i < 50; i++) {
+            let x: number = 20 + Math.random() * 760;
+            let y: number = 20 + Math.random() * 560;
+            drawstorm(x, y, "#FFFFFF");
         }
     }
-
-    function drawTriangle(_x: number, _y: number, _color: string): void {
+    
+    function drawstorm(_x: number, _y: number, _color: string): void {
+        //Schneeflocken
+        crc2.beginPath();
+        crc2.moveTo(_x, _y);
+        crc2.arc(_x, _y, 5, 0, 2 * Math.PI);
+        crc2.fill();
+        crc2.closePath();
+        crc2.stroke();
+        crc2.fillStyle = _color;
+        crc2.fill();
+    }
+    
+    function drawsun(_x: number, _y: number, _color: string): void {
+        //Sonne
+        crc2.beginPath();
+        crc2.moveTo(_x, _y);
+        crc2.arc(_x, _y, 45, 0, 2 * Math.PI);
+        crc2.fill();
+        crc2.closePath();
+        crc2.fillStyle = _color;
+        crc2.fill();
+    }
+    
+    function drawtree(_x: number, _y: number, _color: string): void {
         //Tanne
         crc2.beginPath();
         crc2.moveTo(_x, _y);
-        crc2.lineTo(_x + 20, _y + 30);
-        crc2.lineTo(_x - 20, _y + 30);
+        crc2.lineTo(_x - 10, _y + 0);
+        crc2.lineTo(_x - 10, _y - 10);
+        crc2.lineTo(_x - 20, _y - 10);
+        crc2.lineTo(_x - 10, _y - 20);
+        crc2.lineTo(_x - 20, _y - 20);
+        crc2.lineTo(_x + 0, _y - 40);
+        crc2.lineTo(_x + 20, _y - 20);
+        crc2.lineTo(_x + 10, _y - 20);
+        crc2.lineTo(_x + 20, _y - 10);
+        crc2.lineTo(_x - 10, _y - 10);
+        crc2.lineTo(_x + 10, _y - 10);
+        crc2.lineTo(_x + 10, _y + 0);
         crc2.closePath();
         crc2.stroke();
         crc2.fillStyle = _color;
