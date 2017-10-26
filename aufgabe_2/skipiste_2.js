@@ -58,6 +58,8 @@ var L02;
             var y = 350 + Math.random() * 250;
             drawtree(x, y, "#004305");
         }
+        drawtree(100, 300, "#004305");
+        drawtree(150, 300, "#004305");
         // Sonne an zuf�lliger Position zwischen 600 und 750 horizontal und 350 und 600 vertikal
         for (var i = 0; i < 1; i++) {
             var x = 600 + Math.random() * 150;
