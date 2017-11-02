@@ -16,8 +16,8 @@ url('https://fonts.googleapis.com/css?family=Ubuntu');
 
 body{
     font-family: 'Ubuntu', sans-serif;
-	text-align: left;
-	background-color: lightgrey;
+	text-align: center;
+	background-color: grey;
 }
 
 li{
