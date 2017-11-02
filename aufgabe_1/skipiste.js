@@ -6,19 +6,18 @@
 //Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
 window.addEventListener("load", ski);
 function ski() {
-    // Sucht die Zeichenfl�che "Canvas".
-    var canvas = document.getElementsByTagName("canvas")[0]; // 
-    var crc2 = canvas.getContext("2d"); // crc2 = 
+    var canvas = document.getElementsByTagName("canvas")[0]; // Sucht die Zeichenfl�che "Canvas".
+    var crc2 = canvas.getContext("2d"); // crc2 = Kurzform f�r "CanvasRenderingContext2D"
     // Himmel
     crc2.fillStyle = "#004ae0";
     crc2.fillRect(0, 0, 800, 600); // Gr��e des Himmels
     // Berg 2 (Hintergrund)
     crc2.fillStyle = "#666666";
-    crc2.beginPath();
+    crc2.beginPath(); // Startet Linie
     crc2.moveTo(250, 100); // H�he
     crc2.lineTo(425, 450);
     crc2.lineTo(75, 450);
-    crc2.fill();
+    crc2.fill(); // F�llt die Fl�che aus
     // Berg 3 (Hintergrund)
     crc2.fillStyle = "#434343";
     crc2.beginPath();
@@ -29,7 +28,7 @@ function ski() {
     // Wolke 1  
     crc2.fillStyle = "#ffffff";
     crc2.beginPath();
-    crc2.arc(700, 195, 30, 0, 2 * Math.PI);
+    crc2.arc(700, 195, 30, 0, 2 * Math.PI); // arc = Kreis
     crc2.fill();
     crc2.beginPath();
     crc2.arc(730, 185, 30, 0, 2 * Math.PI);
@@ -64,7 +63,7 @@ function ski() {
     crc2.beginPath();
     crc2.moveTo(0, 100);
     crc2.lineTo(800, 370);
-    crc2.stroke();
+    crc2.stroke(); // Zeichnet Linie
     crc2.beginPath(); //Halteseil der Gondel
     crc2.moveTo(90, 130);
     crc2.lineTo(90, 150);

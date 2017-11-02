@@ -9,9 +9,8 @@ window.addEventListener("load", ski);
 
 
 function ski(): void {
-// Sucht die Zeichenfläche "Canvas".
-    let canvas: HTMLCanvasElement = document.getElementsByTagName("canvas")[0]; // 
-    let crc2: CanvasRenderingContext2D = canvas.getContext("2d"); // crc2 = 
+    let canvas: HTMLCanvasElement = document.getElementsByTagName("canvas")[0]; // Sucht die Zeichenfläche "Canvas".
+    let crc2: CanvasRenderingContext2D = canvas.getContext("2d"); // crc2 = Kurzform für "CanvasRenderingContext2D"
 
     // Himmel
     crc2.fillStyle = "#004ae0";
@@ -19,11 +18,11 @@ function ski(): void {
 
     // Berg 2 (Hintergrund)
     crc2.fillStyle = "#666666";
-    crc2.beginPath();
+    crc2.beginPath();  // Startet Linie
     crc2.moveTo(250, 100); // Höhe
     crc2.lineTo(425, 450);
     crc2.lineTo(75, 450);
-    crc2.fill();
+    crc2.fill(); // Füllt die Fläche aus
 
     // Berg 3 (Hintergrund)
     crc2.fillStyle = "#434343";
@@ -36,7 +35,7 @@ function ski(): void {
     // Wolke 1  
     crc2.fillStyle = "#ffffff";
     crc2.beginPath();
-    crc2.arc(700, 195, 30, 0, 2 * Math.PI);
+    crc2.arc(700, 195, 30, 0, 2 * Math.PI); // arc = Kreis
     crc2.fill();
     crc2.beginPath();
     crc2.arc(730, 185, 30, 0, 2 * Math.PI);
@@ -74,7 +73,7 @@ function ski(): void {
     crc2.beginPath();
     crc2.moveTo(0, 100);
     crc2.lineTo(800, 370);
-    crc2.stroke();
+    crc2.stroke(); // Zeichnet Linie
 
     crc2.beginPath(); //Halteseil der Gondel
     crc2.moveTo(90, 130);
