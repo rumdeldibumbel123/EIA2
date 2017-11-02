@@ -1,3 +1,13 @@
+/*
+Aufgabe 0: Miniseite
+Name: Daniel Sand
+Matrikel: 256649
+Datum: 15.10.2017
+
+Hiermit versichere ich, dass ich diesen
+Code selbst geschrieben habe. Er wurde
+nicht kopiert und auch nicht diktiert.
+*/
 var name = prompt("Name");
 function init() {
     var node = document.getElementById("inhalt");

@@ -1,3 +1,13 @@
+/*
+Aufgabe 2: Skipiste mit Funktionen
+Name: Daniel Sand
+Matrikel: 256649
+Datum: 22.10.2017
+
+Hiermit versichere ich, dass ich diesen
+Code selbst geschrieben habe. Er wurde
+nicht kopiert und auch nicht diktiert.
+*/
 var L02;
 (function (L02) {
     window.addEventListener("load", init);
