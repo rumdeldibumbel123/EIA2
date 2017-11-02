@@ -14,9 +14,7 @@ var L02;
     var crc2;
     function init() {
         var canvas = document.getElementsByTagName("canvas")[0];
-        console.log(canvas);
         crc2 = canvas.getContext("2d");
-        console.log(crc2);
         //Himmel
         crc2.fillStyle = "#004ae0";
         crc2.fillRect(0, 0, 800, 600);
@@ -68,9 +66,9 @@ var L02;
             var y = 350 + Math.random() * 250;
             drawtree(x, y, "#004305");
         }
-        drawtree(100, 300, "#004305");
+        drawtree(100, 300, "#004305"); // L�sst einen Baum mithilfe der Funktion "drawtree" automatisch erzeugen.
         drawtree(150, 300, "#004305");
-        // Sonne an zuf�lliger Position zwischen 600 und 750 horizontal und 350 und 600 vertikal
+        // Sonne an zuf�lliger Position zwischen 600 und 150 horizontal und 50 und 150 vertikal
         for (var i = 0; i < 1; i++) {
             var x = 600 + Math.random() * 150;
             var y = 50 + Math.random() * 150;
@@ -87,7 +85,7 @@ var L02;
         crc2.beginPath();
         crc2.arc(760, 195, 30, 0, 2 * Math.PI);
         crc2.fill();
-        // Schneeflocken an zuf�lliger Position zwischen 20 und 780 horizontal und 20 und 580 vertikal
+        // Schneeflocken an zuf�lliger Position zwischen 20 und 760 horizontal und 20 und 560 vertikal
         for (var i = 0; i < 50; i++) {
             var x = 20 + Math.random() * 760;
             var y = 20 + Math.random() * 560;

@@ -9,16 +9,13 @@ Code selbst geschrieben habe. Er wurde
 nicht kopiert und auch nicht diktiert. 
 */
 
-namespace L02 {
+namespace L02 { // 
     window.addEventListener("load", init);
     let crc2: CanvasRenderingContext2D;
 
     function init(): void {
         let canvas: HTMLCanvasElement = document.getElementsByTagName("canvas")[0];
-        console.log(canvas);
-
         crc2 = canvas.getContext("2d");
-        console.log(crc2);
 
         //Himmel
         crc2.fillStyle = "#004ae0";
@@ -75,22 +72,22 @@ namespace L02 {
 
 
         // 10 Tannen an zufälliger Position zwischen 20 und 420 horizontal und 350 und 600 vertikal
-        for (let i: number = 0; i < 10; i++) {
+        for (let i: number = 0; i < 10; i++) { // Zählschleife die bis 10 zählt.
             let x: number = 20 + Math.random() * 400;
             let y: number = 350 + Math.random() * 250;
             drawtree(x, y, "#004305");
         }
-        
-        drawtree (100, 300, "#004305");
-        drawtree (150, 300, "#004305");
-        
-        // Sonne an zufälliger Position zwischen 600 und 750 horizontal und 350 und 600 vertikal
+
+        drawtree(100, 300, "#004305"); // Lässt einen Baum mithilfe der Funktion "drawtree" automatisch erzeugen.
+        drawtree(150, 300, "#004305");
+
+        // Sonne an zufälliger Position zwischen 600 und 150 horizontal und 50 und 150 vertikal
         for (let i: number = 0; i < 1; i++) {
             let x: number = 600 + Math.random() * 150;
             let y: number = 50 + Math.random() * 150;
             drawsun(x, y, "#FFF800");
         }
-        
+
         //Wolke 
         crc2.fillStyle = "#ffffff";
         crc2.beginPath();
@@ -102,15 +99,15 @@ namespace L02 {
         crc2.beginPath();
         crc2.arc(760, 195, 30, 0, 2 * Math.PI);
         crc2.fill();
-        
-        // Schneeflocken an zufälliger Position zwischen 20 und 780 horizontal und 20 und 580 vertikal
+
+        // Schneeflocken an zufälliger Position zwischen 20 und 760 horizontal und 20 und 560 vertikal
         for (let i: number = 0; i < 50; i++) {
             let x: number = 20 + Math.random() * 760;
             let y: number = 20 + Math.random() * 560;
             drawstorm(x, y, "#FFFFFF");
         }
     }
-    
+
     function drawstorm(_x: number, _y: number, _color: string): void {
         //Schneeflocken
         crc2.beginPath();
@@ -122,7 +119,7 @@ namespace L02 {
         crc2.fillStyle = _color;
         crc2.fill();
     }
-    
+
     function drawsun(_x: number, _y: number, _color: string): void {
         //Sonne
         crc2.beginPath();
@@ -133,7 +130,7 @@ namespace L02 {
         crc2.fillStyle = _color;
         crc2.fill();
     }
-    
+
     function drawtree(_x: number, _y: number, _color: string): void {
         //Tanne
         crc2.beginPath();
