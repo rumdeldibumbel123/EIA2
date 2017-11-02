@@ -9,9 +9,9 @@ window.addEventListener("load", ski);
 
 
 function ski(): void {
-    (document.getElementsByTagName("canvas")[0]);
-    let canvas: HTMLCanvasElement = document.getElementsByTagName("canvas")[0]; //
-    let crc2: CanvasRenderingContext2D = canvas.getContext("2d");
+// Sucht die Zeichenfläche "Canvas".
+    let canvas: HTMLCanvasElement = document.getElementsByTagName("canvas")[0]; // 
+    let crc2: CanvasRenderingContext2D = canvas.getContext("2d"); // crc2 = 
 
     // Himmel
     crc2.fillStyle = "#004ae0";

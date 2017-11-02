@@ -6,9 +6,9 @@
 //Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
 window.addEventListener("load", ski);
 function ski() {
-    (document.getElementsByTagName("canvas")[0]);
-    var canvas = document.getElementsByTagName("canvas")[0]; //
-    var crc2 = canvas.getContext("2d");
+    // Sucht die Zeichenfl�che "Canvas".
+    var canvas = document.getElementsByTagName("canvas")[0]; // 
+    var crc2 = canvas.getContext("2d"); // crc2 = 
     // Himmel
     crc2.fillStyle = "#004ae0";
     crc2.fillRect(0, 0, 800, 600); // Gr��e des Himmels
