@@ -14,7 +14,7 @@ namespace L02 { //
     let crc2: CanvasRenderingContext2D;
 
     function init(): void {
-        let canvas: HTMLCanvasElement = document.getElementsByTagName("canvas")[0];
+        let canvas: HTMLCanvasElement = document.getElementsByTagName("canvas")[0]; 
         crc2 = canvas.getContext("2d");
 
         //Himmel

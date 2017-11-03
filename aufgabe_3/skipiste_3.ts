@@ -1,8 +1,10 @@
 namespace L03 {
-    window.addEventListener("load", init);
-    let crc2: CanvasRenderingContext2D;
+    window.addEventListener("load", init); // Horcht bis die Seite geladen ist. Window ist Anzeigebereich.
+    let crc2: CanvasRenderingContext2D; // crc2 = Kurzform
 
-    let arrayX: number[] = []; // Array
+    // Arrays
+    
+    let arrayX: number[] = []; 
     let arrayY: number[] = [];
 
     var sun: number[] = [];
@@ -12,7 +14,7 @@ namespace L03 {
 
     var hintergrund: any;
 
-    function init(): void {
+    function init(): void { // function = Container mit eigenen Variablen, void = kein Rückgabewert
         let canvas: HTMLCanvasElement = document.getElementsByTagName("canvas")[0];
         crc2 = canvas.getContext("2d");
         
@@ -82,7 +84,7 @@ namespace L03 {
             drawtree(x, y, "#004305");
         }
 
-        drawtree(100, 300, "#004305");
+        drawtree(100, 300, "#004305"); // Lässt Baum an fester Stelle mithilfe von Funktion erstellen.
         drawtree(150, 300, "#004305");
 
         //Wolke 

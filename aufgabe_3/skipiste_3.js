@@ -1,8 +1,9 @@
 var L03;
 (function (L03) {
-    window.addEventListener("load", init);
-    var crc2;
-    var arrayX = []; // Array
+    window.addEventListener("load", init); // Horcht bis die Seite geladen ist. Window ist Anzeigebereich.
+    var crc2; // crc2 = Kurzform
+    // Arrays
+    var arrayX = [];
     var arrayY = [];
     var sun = [];
     var snow = [];
@@ -68,7 +69,7 @@ var L03;
             var y = 350 + Math.random() * 250;
             drawtree(x, y, "#004305");
         }
-        drawtree(100, 300, "#004305");
+        drawtree(100, 300, "#004305"); // L�sst Baum an fester Stelle mithilfe von Funktion erstellen.
         drawtree(150, 300, "#004305");
         //Wolke 
         crc2.fillStyle = "#ffffff";
