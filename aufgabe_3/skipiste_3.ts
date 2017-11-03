@@ -2,7 +2,7 @@ namespace L03 {
     window.addEventListener("load", init);
     let crc2: CanvasRenderingContext2D;
 
-    let arrayX: number[] = [];
+    let arrayX: number[] = []; // Array
     let arrayY: number[] = [];
 
     var sun: number[] = [];
@@ -14,16 +14,13 @@ namespace L03 {
 
     function init(): void {
         let canvas: HTMLCanvasElement = document.getElementsByTagName("canvas")[0];
-        console.log(canvas);
-
         crc2 = canvas.getContext("2d");
-        console.log(crc2);
-
-        sun = [Math.random() * 400 + 40, Math.random() * 100 + 40]; // Startkoordinaten Sonne
+        
+        sun = [Math.random() * 400 + 40, Math.random() * 100 + 40]; // Zufällige Startkoordinaten Sonne
         for (let i: number = 0; i < 50; i++) {
-            snow.push(Math.random() * 800, Math.random() * 600); // Startkoordinaten Schneeflocken
+            snow.push(Math.random() * 800, Math.random() * 600); // Zufällige Startkoordinaten Schneeflocken, push = Fügt Array Daten hinzu.
         }
-        ski = [-20, 230];
+        ski = [-20, 230]; // Startkoordinaten Skifahrer
 
         //Himmel
         crc2.fillStyle = "#004ae0";
@@ -91,7 +88,7 @@ namespace L03 {
         //Wolke 
         crc2.fillStyle = "#ffffff";
         crc2.beginPath();
-        crc2.arc(700, 195, 30, 0, 2 * Math.PI);
+        crc2.arc(700, 195, 30, 0, 2 * Math.PI); // Math.PI = Berechnet/Zeichnet Kreis
         crc2.fill();
         crc2.beginPath();
         crc2.arc(730, 185, 30, 0, 2 * Math.PI);
@@ -100,9 +97,11 @@ namespace L03 {
         crc2.arc(760, 195, 30, 0, 2 * Math.PI);
         crc2.fill();
 
-        hintergrund = crc2.getImageData(0, 0, 800, 600);
+        hintergrund = crc2.getImageData(0, 0, 800, 600); // Lädt zuvor gelöschtes Bild wieder.
         animate();
     }
+    
+    // Jetzt folgen Funktionen die Elemente die automatisch generiert werden sollen.
 
     function drawski(_x: number, _y: number, _color: string): void {
         //Schneeflocken
@@ -175,7 +174,7 @@ namespace L03 {
     }
     function hubhubAn(){
         let audio : any = document.getElementById("audio");
-        audio.play()    ;
+        audio.play()    ; // Startet Audiospur
     }    
      function hubhubAus(){
         let audio : any = document.getElementById("audio");
@@ -184,8 +183,8 @@ namespace L03 {
     function animate(): void {
         crc2.clearRect(0, 0, 800, 600); // Hier Hintergrund löschen.
         crc2.putImageData(hintergrund, 0, 0); // Hier Hintergrund laden.
-        sun[0] = sun[0] + 1;
-        if (sun[0] > 900) { sun[0] = 0; }
+        sun[0] = sun[0] + 1; // Verschiebt Sonne um 1 in x Richtung
+        if (sun[0] > 900) { sun[0] = 0; } // Wenn Wert von Sonne größer als 900 ist, starte bei 0 neu.
         drawsun(sun[0], sun[1], "yellow");
         for (let i: number = 0; i < 100; i++) {
             i++;
@@ -195,26 +194,26 @@ namespace L03 {
             drawsnow(snow[i - 1], snow[i], "#FFFFFF");
         }
         
-        ski[0] = ski[0] + 3;
-        ski[1] = ski[1] + 2;
+        ski[0] = ski[0] + 3; // Animiert Skifahrer
+        ski[1] = ski[1] + 2; // Animiert Skifahrer
         if (ski[0] > 900) { ski[0] = -20;ski[1] = 230; }
         drawski(ski[0], ski[1], "red");
         
-        if (ski[0] < stone[0]) {
+        if (ski[0] < stone[0]) { // Falls x Wert des Skifahrers kleiner als X Wert des Felsens...
         
-        drawstone(stone[0], stone[1], "darkgrey"); 
+        drawstone(stone[0], stone[1], "darkgrey"); // ... dann Felsen Dunkelgrau zeichnen.
        
         }
         
-        else if (stone[0] < ski[0]) {
-        drawstone(stone[0], stone[1], "red");
+        else if (stone[0] < ski[0]) { // Falls x Wert des Skifahrers kleiner als X Wert des Felsens...
+        drawstone(stone[0], stone[1], "red"); // ... dann Felsen Rot zeichnen.
             hubhubAn();
         }
 
 
        
 
-        window.setTimeout(animate, 20);
+        window.setTimeout(animate, 20); // 20 Milisekunden warten.
     }
 }
 
