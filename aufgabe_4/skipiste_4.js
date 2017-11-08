@@ -3,6 +3,8 @@ var L04;
     window.addEventListener("load", init); // Horcht bis die Seite geladen ist. Window ist Anzeigebereich.
     var crc2; // crc2 = Kurzform
     var ski = [];
+    var sun = [];
+    var snow = [];
     // Definiert die variablen Startkoordinaten der 15 Skifahrer
     for (var i = 0; i < 15; i++) {
         ski[i] = {
@@ -13,7 +15,6 @@ var L04;
             color: "hsl(" + Math.random() * 360 + ", 100%, 50%)"
         };
     }
-    var sun = [];
     // Definiert die Startkoordinaten der Sonne.
     sun[0] = {
         x: -100,
@@ -22,7 +23,6 @@ var L04;
         dy: +1,
         color: "#FFFF00"
     };
-    var snow = [];
     // Definiert die variablen Startkoordinaten der Schneeflocken.
     for (var i = 0; i < 200; i++) {
         snow[i] = {

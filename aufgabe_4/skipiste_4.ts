@@ -10,7 +10,25 @@ namespace L04 {
         color: string;
     }
     
+        interface suninfo {
+        x: number;
+        y: number;
+        dx: number;
+        dy: number;
+        color: string;
+    }
+    
+        interface snowinfo {
+        x: number;
+        y: number;
+        dx: number;
+        dy: number;
+        color: string;
+    }
+    
     let ski: skiinfo[] = [];
+    let sun: suninfo[] = [];
+    let snow: snowinfo[] = [];
     
     // Definiert die variablen Startkoordinaten der 15 Skifahrer
         for (let i: number = 0; i < 15; i++) {
@@ -27,16 +45,6 @@ namespace L04 {
 
         }
 
-    interface suninfo {
-        x: number;
-        y: number;
-        dx: number;
-        dy: number;
-        color: string;
-    }
-    
-    let sun: suninfo[] = [];
-    
     // Definiert die Startkoordinaten der Sonne.
         sun[0] = {
             
@@ -48,16 +56,6 @@ namespace L04 {
             
         };
 
-    interface snowinfo {
-        x: number;
-        y: number;
-        dx: number;
-        dy: number;
-        color: string;
-    }
-    
-    let snow: snowinfo[] = [];
-    
     // Definiert die variablen Startkoordinaten der Schneeflocken.
         for (let i: number = 0; i < 200; i++) {
 
