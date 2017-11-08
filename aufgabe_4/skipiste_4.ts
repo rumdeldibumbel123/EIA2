@@ -4,12 +4,21 @@ namespace L04 {
 
     // Arrays
     
+    interface skiinfo {
+        x: number;
+        y: number;
+        dx: number;
+        dy: number;
+        color: string;
+    }
+    
+    let ski: skiInfo[] = [];
+    
     let arrayX: number[] = []; 
     let arrayY: number[] = [];
 
     var sun: number[] = [];
     var snow: number[] = [];
-    var ski: number[] = [];
     var stone: number[] = [500,500];
 
     var hintergrund: any;
@@ -163,6 +172,24 @@ namespace L04 {
         crc2.stroke();
         crc2.fillStyle = _color;
         crc2.fill();
+        
+        for (let i: number = 0; i < 100; i++) {
+
+            ski[i] = {
+
+                x: 200,
+
+                y: 100,
+
+                dx: Math.random() * 2 - 1,
+
+                dy: Math.random() * 2 - 1,
+
+                color: "hsl(" + Math.random() * 360 + ", 100%, 50%)"
+
+            };
+
+        }
     }
     
     function animate(): void {
@@ -179,14 +206,32 @@ namespace L04 {
             drawsnow(snow[i - 1], snow[i], "#FFFFFF");
         }
         
-        ski[0] = ski[0] + 3; // Animiert Skifahrer
-        ski[1] = ski[1] + 2; // Animiert Skifahrer
-        if (ski[0] > 600 && ski[1] > 600) { ski[0] = -20; ski[1] = 230; } // Wenn Wert von Skifahrer größer als 600 ist, starte bei Ursprung neu.
-        drawski(ski[0], ski[1], "red");
+        // ski[0] = ski[0] + 3; // Animiert Skifahrer
+        // ski[1] = ski[1] + 2; // Animiert Skifahrer
+        // if (ski[0] > 600 && ski[1] > 600) { ski[0] = -20; ski[1] = 230; } // Wenn Wert von Skifahrer größer als 600 ist, starte bei Ursprung neu.
+        //drawski(ski[0], ski[1], "red");
         
+        for (let i: number = 0; i < ski.length; i++) {
 
+            moveAndDrawski( ski[i] );
+
+        }
+        
         window.setTimeout(animate, 20); // 20 Milisekunden warten.
     }
+    
+        function moveAndDrawski(_square: skiinfo): void {
+
+        _square.x += _square.dx;
+
+        _square.y += _square.dy; // andere Bewegungsmuster zu finden
+
+        crc2.fillStyle = _square.color;
+
+        crc2.fillRect(_square.x, _square.y, 20, 20);
+
+    }
+    
 }
 
 
