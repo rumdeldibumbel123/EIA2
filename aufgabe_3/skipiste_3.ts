@@ -106,7 +106,7 @@ namespace L03 {
     // Jetzt folgen Funktionen die Elemente die automatisch generiert werden sollen.
 
     function drawski(_x: number, _y: number, _color: string): void {
-        //Schneeflocken
+        //Skifahrer
         crc2.beginPath();
         crc2.moveTo(_x, _y);
         crc2.arc(_x, _y, 5, 0, 2 * Math.PI);

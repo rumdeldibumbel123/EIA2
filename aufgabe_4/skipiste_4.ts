@@ -2,8 +2,6 @@ namespace L04 {
     window.addEventListener("load", init); // Horcht bis die Seite geladen ist. Window ist Anzeigebereich.
     let crc2: CanvasRenderingContext2D; // crc2 = Kurzform
 
-    // Arrays
-    
     interface skiinfo {
         x: number;
         y: number;
@@ -12,26 +10,76 @@ namespace L04 {
         color: string;
     }
     
-    let ski: skiInfo[] = [];
+    let ski: skiinfo[] = [];
     
-    let arrayX: number[] = []; 
-    let arrayY: number[] = [];
+    // Definiert die variablen Startkoordinaten der 15 Skifahrer
+        for (let i: number = 0; i < 15; i++) {
 
-    var sun: number[] = [];
-    var snow: number[] = [];
-    var stone: number[] = [500,500];
+            ski[i] = {
+
+                x: Math.random() * 700 - 700,
+                y: Math.random() * 100 + 260,
+                dx: Math.random() * 1 + 3,
+                dy: Math.random() * 1 + 1,
+                color: "hsl(" + Math.random() * 360 + ", 100%, 50%)"
+
+            };
+
+        }
+
+    interface suninfo {
+        x: number;
+        y: number;
+        dx: number;
+        dy: number;
+        color: string;
+    }
+    
+    let sun: suninfo[] = [];
+    
+    // Definiert die Startkoordinaten der Sonne.
+        sun[0] = {
+            
+            x: -100,
+            y: Math.random() * 150,
+            dx: + 3,
+            dy: + 1,
+            color: "#FFFF00"
+            
+        };
+
+    interface snowinfo {
+        x: number;
+        y: number;
+        dx: number;
+        dy: number;
+        color: string;
+    }
+    
+    let snow: snowinfo[] = [];
+    
+    // Definiert die variablen Startkoordinaten der Schneeflocken.
+        for (let i: number = 0; i < 200; i++) {
+
+            snow[i] = {
+
+                x: Math.random() * 800,
+                y: Math.random() * 800 - 800,
+                dx: Math.random() * 1 + 1,
+                dy: Math.random() * 1 + 1,
+                color: "#FFFFFF"
+
+            };
+
+        }
 
     var hintergrund: any;
 
     function init(): void { // function = Container mit eigenen Variablen, void = kein Rückgabewert
         let canvas: HTMLCanvasElement = document.getElementsByTagName("canvas")[0];
         crc2 = canvas.getContext("2d");
-        
-        sun = [Math.random() * 400 + 40, Math.random() * 100 + 40]; // Zufällige Startkoordinaten Sonne
-        for (let i: number = 0; i < 50; i++) {
-            snow.push(Math.random() * 800, Math.random() * 600); // Zufällige Startkoordinaten Schneeflocken, push = Fügt Array Daten hinzu.
-        }
-        ski = [-20, 230]; // Startkoordinaten Skifahrer
+
+        // Fest definierte Elemente
 
         //Himmel
         crc2.fillStyle = "#004ae0";
@@ -86,15 +134,12 @@ namespace L04 {
         crc2.lineTo(-800, 500);
         crc2.fill();
 
-        // 10 Tannen an zufälliger Position zwischen 20 und 420 horizontal und 350 und 600 vertikal
+        // Ruft die 10 Tannen an zufällig generierter Position auf.
         for (let i: number = 0; i < 10; i++) {
             let x: number = 20 + Math.random() * 400;
             let y: number = 350 + Math.random() * 250;
             drawtree(x, y, "#004305");
         }
-
-        drawtree(100, 300, "#004305"); // Lässt Baum an fester Stelle mithilfe von Funktion erstellen.
-        drawtree(150, 300, "#004305");
 
         //Wolke 
         crc2.fillStyle = "#ffffff";
@@ -111,47 +156,87 @@ namespace L04 {
         hintergrund = crc2.getImageData(0, 0, 800, 600); // Lädt zuvor gelöschtes Bild wieder.
         animate();
     }
-    
-    // Jetzt folgen Funktionen die Elemente die automatisch generiert werden sollen.
 
-    function drawski(_x: number, _y: number, _color: string): void {
-        //Schneeflocken
+    function animate(): void {
+        crc2.clearRect(0, 0, 800, 600); // Hier Hintergrund löschen.
+        crc2.putImageData(hintergrund, 0, 0); // Hier Hintergrund laden.
+
+        // Ruft Anzahl Skifahrer abhängig der Länge des Arrays auf.
+        for (let i: number = 0; i < ski.length; i++) {
+            moveAndDrawski(ski[i]);
+        }
+
+        // Ruft Anzahl Schneeflocken abhängig der Länge des Arrays auf.
+        for (let i: number = 0; i < snow.length; i++) {
+            moveAndDrawsnow(snow[i]);
+        }
+
+        // Ruft Sonne auf.
+        moveAndDrawsun(sun[0]);
+        
+        // 20 Millisekunden Timeout.
+        window.setTimeout(animate, 20);
+    }
+
+    // Funktion die Skifahrer zeichnet und animiert.
+
+    function moveAndDrawski(_ski: skiinfo): void {
+
+        _ski.x += _ski.dx;
+        _ski.y += _ski.dy;
+
         crc2.beginPath();
-        crc2.moveTo(_x, _y);
-        crc2.arc(_x, _y, 5, 0, 2 * Math.PI);
+        crc2.moveTo(_ski.x, _ski.y);
+        crc2.arc(_ski.x, _ski.y, 5, 0, 2 * Math.PI);
         crc2.fill();
         crc2.closePath();
         crc2.stroke();
-        crc2.fillStyle = _color;
+        crc2.fillStyle = _ski.color;
         crc2.fill();
-        crc2.fillRect(_x - 5, _y, 8, 20)
-        crc2.fillRect(_x - 10, _y + 20, 30, 5)
-        crc2.fillRect(_x, _y + 5, 10, 5)
-        crc2.fillRect(_x + 10, _y + 5, 3, 15)
+        crc2.fillRect(_ski.x - 5, _ski.y, 8, 20)
+        crc2.fillRect(_ski.x - 10, _ski.y + 20, 30, 5)
+        crc2.fillRect(_ski.x, _ski.y + 5, 10, 5)
+        crc2.fillRect(_ski.x + 10, _ski.y + 5, 3, 15)
+
+        if (_ski.x > 600 && _ski.y > 600) { _ski.x = Math.random() * 700 - 700; _ski.y = Math.random() * 100 + 260 }
+
     }
 
-    function drawsnow(_x: number, _y: number, _color: string): void {
-        //Schneeflocken
+    // Funktion die Sonne zeichnet und animiert.
+    function moveAndDrawsun(_sun: suninfo): void {
+
+        _sun.x += _sun.dx;
+
         crc2.beginPath();
-        crc2.moveTo(_x, _y);
-        crc2.arc(_x, _y, 5, 0, 2 * Math.PI);
+        crc2.moveTo(_sun.x, _sun.y);
+        crc2.arc(_sun.x, _sun.y, 45, 0, 2 * Math.PI);
         crc2.fill();
         crc2.closePath();
-        crc2.fillStyle = _color;
+        crc2.fillStyle = _sun.color;
         crc2.fill();
+
+        if (_sun.x > 900) { _sun.x = -50; }
+
     }
 
-    function drawsun(_x: number, _y: number, _color: string): void {
-        //Sonne
+    // Funktion die Schneeflocken zeichnet und animiert.
+    function moveAndDrawsnow(_snow: snowinfo): void {
+
+        _snow.y += _snow.dy;
+
         crc2.beginPath();
-        crc2.moveTo(_x, _y);
-        crc2.arc(_x, _y, 45, 0, 2 * Math.PI);
+        crc2.moveTo(_snow.x, _snow.y);
+        crc2.arc(_snow.x, _snow.y, 5, 0, 2 * Math.PI);
         crc2.fill();
         crc2.closePath();
-        crc2.fillStyle = _color;
+        crc2.fillStyle = _snow.color;
         crc2.fill();
-    }
 
+        if (_snow.y > 900) { _snow.y = 0; }
+
+    }
+    
+    // Funktion die die Tannen zeichnet.
     function drawtree(_x: number, _y: number, _color: string): void {
         //Tanne
         crc2.beginPath();
@@ -172,66 +257,7 @@ namespace L04 {
         crc2.stroke();
         crc2.fillStyle = _color;
         crc2.fill();
-        
-        for (let i: number = 0; i < 100; i++) {
-
-            ski[i] = {
-
-                x: 200,
-
-                y: 100,
-
-                dx: Math.random() * 2 - 1,
-
-                dy: Math.random() * 2 - 1,
-
-                color: "hsl(" + Math.random() * 360 + ", 100%, 50%)"
-
-            };
-
-        }
-    }
-    
-    function animate(): void {
-        crc2.clearRect(0, 0, 800, 600); // Hier Hintergrund löschen.
-        crc2.putImageData(hintergrund, 0, 0); // Hier Hintergrund laden.
-        sun[0] = sun[0] + 1; // Verschiebt Sonne um 1 in x Richtung
-        if (sun[0] > 900) { sun[0] = 0; } // Wenn Wert von Sonne größer als 900 ist, starte bei 0 neu.
-        drawsun(sun[0], sun[1], "yellow");
-        for (let i: number = 0; i < 100; i++) {
-            i++;
-
-            snow[i] = snow[i] + 1;
-            if (snow[i] > 600) { snow[i] = 0; }
-            drawsnow(snow[i - 1], snow[i], "#FFFFFF");
-        }
-        
-        // ski[0] = ski[0] + 3; // Animiert Skifahrer
-        // ski[1] = ski[1] + 2; // Animiert Skifahrer
-        // if (ski[0] > 600 && ski[1] > 600) { ski[0] = -20; ski[1] = 230; } // Wenn Wert von Skifahrer größer als 600 ist, starte bei Ursprung neu.
-        //drawski(ski[0], ski[1], "red");
-        
-        for (let i: number = 0; i < ski.length; i++) {
-
-            moveAndDrawski( ski[i] );
-
-        }
-        
-        window.setTimeout(animate, 20); // 20 Milisekunden warten.
-    }
-    
-        function moveAndDrawski(_square: skiinfo): void {
-
-        _square.x += _square.dx;
-
-        _square.y += _square.dy; // andere Bewegungsmuster zu finden
-
-        crc2.fillStyle = _square.color;
-
-        crc2.fillRect(_square.x, _square.y, 20, 20);
 
     }
-    
+
 }
-
-

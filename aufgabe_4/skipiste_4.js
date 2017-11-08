@@ -2,22 +2,42 @@ var L04;
 (function (L04) {
     window.addEventListener("load", init); // Horcht bis die Seite geladen ist. Window ist Anzeigebereich.
     var crc2; // crc2 = Kurzform
-    // Arrays
-    var arrayX = [];
-    var arrayY = [];
-    var sun = [];
-    var snow = [];
     var ski = [];
-    var stone = [500, 500];
+    // Definiert die variablen Startkoordinaten der 15 Skifahrer
+    for (var i = 0; i < 15; i++) {
+        ski[i] = {
+            x: Math.random() * 700 - 700,
+            y: Math.random() * 100 + 260,
+            dx: Math.random() * 1 + 3,
+            dy: Math.random() * 1 + 1,
+            color: "hsl(" + Math.random() * 360 + ", 100%, 50%)"
+        };
+    }
+    var sun = [];
+    // Definiert die Startkoordinaten der Sonne.
+    sun[0] = {
+        x: -100,
+        y: Math.random() * 150,
+        dx: +3,
+        dy: +1,
+        color: "#FFFF00"
+    };
+    var snow = [];
+    // Definiert die variablen Startkoordinaten der Schneeflocken.
+    for (var i = 0; i < 200; i++) {
+        snow[i] = {
+            x: Math.random() * 800,
+            y: Math.random() * 800 - 800,
+            dx: Math.random() * 1 + 1,
+            dy: Math.random() * 1 + 1,
+            color: "#FFFFFF"
+        };
+    }
     var hintergrund;
     function init() {
         var canvas = document.getElementsByTagName("canvas")[0];
         crc2 = canvas.getContext("2d");
-        sun = [Math.random() * 400 + 40, Math.random() * 100 + 40]; // Zuf�llige Startkoordinaten Sonne
-        for (var i = 0; i < 50; i++) {
-            snow.push(Math.random() * 800, Math.random() * 600); // Zuf�llige Startkoordinaten Schneeflocken, push = F�gt Array Daten hinzu.
-        }
-        ski = [-20, 230]; // Startkoordinaten Skifahrer
+        // Fest definierte Elemente
         //Himmel
         crc2.fillStyle = "#004ae0";
         crc2.fillRect(0, 0, 800, 600);
@@ -63,14 +83,12 @@ var L04;
         crc2.lineTo(800, 500);
         crc2.lineTo(-800, 500);
         crc2.fill();
-        // 10 Tannen an zuf�lliger Position zwischen 20 und 420 horizontal und 350 und 600 vertikal
+        // Ruft die 10 Tannen an zuf�llig generierter Position auf.
         for (var i = 0; i < 10; i++) {
             var x = 20 + Math.random() * 400;
             var y = 350 + Math.random() * 250;
             drawtree(x, y, "#004305");
         }
-        drawtree(100, 300, "#004305"); // L�sst Baum an fester Stelle mithilfe von Funktion erstellen.
-        drawtree(150, 300, "#004305");
         //Wolke 
         crc2.fillStyle = "#ffffff";
         crc2.beginPath();
@@ -85,42 +103,72 @@ var L04;
         hintergrund = crc2.getImageData(0, 0, 800, 600); // L�dt zuvor gel�schtes Bild wieder.
         animate();
     }
-    // Jetzt folgen Funktionen die Elemente die automatisch generiert werden sollen.
-    function drawski(_x, _y, _color) {
-        //Schneeflocken
+    function animate() {
+        crc2.clearRect(0, 0, 800, 600); // Hier Hintergrund l�schen.
+        crc2.putImageData(hintergrund, 0, 0); // Hier Hintergrund laden.
+        // Ruft Anzahl Skifahrer abh�ngig der L�nge des Arrays auf.
+        for (var i = 0; i < ski.length; i++) {
+            moveAndDrawski(ski[i]);
+        }
+        // Ruft Anzahl Schneeflocken abh�ngig der L�nge des Arrays auf.
+        for (var i = 0; i < snow.length; i++) {
+            moveAndDrawsnow(snow[i]);
+        }
+        // Ruft Sonne auf.
+        moveAndDrawsun(sun[0]);
+        // 20 Millisekunden Timeout.
+        window.setTimeout(animate, 20);
+    }
+    // Funktion die Skifahrer zeichnet und animiert.
+    function moveAndDrawski(_ski) {
+        _ski.x += _ski.dx;
+        _ski.y += _ski.dy;
         crc2.beginPath();
-        crc2.moveTo(_x, _y);
-        crc2.arc(_x, _y, 5, 0, 2 * Math.PI);
+        crc2.moveTo(_ski.x, _ski.y);
+        crc2.arc(_ski.x, _ski.y, 5, 0, 2 * Math.PI);
         crc2.fill();
         crc2.closePath();
         crc2.stroke();
-        crc2.fillStyle = _color;
+        crc2.fillStyle = _ski.color;
         crc2.fill();
-        crc2.fillRect(_x - 5, _y, 8, 20);
-        crc2.fillRect(_x - 10, _y + 20, 30, 5);
-        crc2.fillRect(_x, _y + 5, 10, 5);
-        crc2.fillRect(_x + 10, _y + 5, 3, 15);
+        crc2.fillRect(_ski.x - 5, _ski.y, 8, 20);
+        crc2.fillRect(_ski.x - 10, _ski.y + 20, 30, 5);
+        crc2.fillRect(_ski.x, _ski.y + 5, 10, 5);
+        crc2.fillRect(_ski.x + 10, _ski.y + 5, 3, 15);
+        if (_ski.x > 600 && _ski.y > 600) {
+            _ski.x = Math.random() * 700 - 700;
+            _ski.y = Math.random() * 100 + 260;
+        }
     }
-    function drawsnow(_x, _y, _color) {
-        //Schneeflocken
+    // Funktion die Sonne zeichnet und animiert.
+    function moveAndDrawsun(_sun) {
+        _sun.x += _sun.dx;
         crc2.beginPath();
-        crc2.moveTo(_x, _y);
-        crc2.arc(_x, _y, 5, 0, 2 * Math.PI);
+        crc2.moveTo(_sun.x, _sun.y);
+        crc2.arc(_sun.x, _sun.y, 45, 0, 2 * Math.PI);
         crc2.fill();
         crc2.closePath();
-        crc2.fillStyle = _color;
+        crc2.fillStyle = _sun.color;
         crc2.fill();
+        if (_sun.x > 900) {
+            _sun.x = -50;
+        }
     }
-    function drawsun(_x, _y, _color) {
-        //Sonne
+    // Funktion die Schneeflocken zeichnet und animiert.
+    function moveAndDrawsnow(_snow) {
+        _snow.y += _snow.dy;
         crc2.beginPath();
-        crc2.moveTo(_x, _y);
-        crc2.arc(_x, _y, 45, 0, 2 * Math.PI);
+        crc2.moveTo(_snow.x, _snow.y);
+        crc2.arc(_snow.x, _snow.y, 5, 0, 2 * Math.PI);
         crc2.fill();
         crc2.closePath();
-        crc2.fillStyle = _color;
+        crc2.fillStyle = _snow.color;
         crc2.fill();
+        if (_snow.y > 900) {
+            _snow.y = 0;
+        }
     }
+    // Funktion die die Tannen zeichnet.
     function drawtree(_x, _y, _color) {
         //Tanne
         crc2.beginPath();
@@ -141,30 +189,5 @@ var L04;
         crc2.stroke();
         crc2.fillStyle = _color;
         crc2.fill();
-    }
-    function animate() {
-        crc2.clearRect(0, 0, 800, 600); // Hier Hintergrund l�schen.
-        crc2.putImageData(hintergrund, 0, 0); // Hier Hintergrund laden.
-        sun[0] = sun[0] + 1; // Verschiebt Sonne um 1 in x Richtung
-        if (sun[0] > 900) {
-            sun[0] = 0;
-        } // Wenn Wert von Sonne gr��er als 900 ist, starte bei 0 neu.
-        drawsun(sun[0], sun[1], "yellow");
-        for (var i = 0; i < 100; i++) {
-            i++;
-            snow[i] = snow[i] + 1;
-            if (snow[i] > 600) {
-                snow[i] = 0;
-            }
-            drawsnow(snow[i - 1], snow[i], "#FFFFFF");
-        }
-        ski[0] = ski[0] + 3; // Animiert Skifahrer
-        ski[1] = ski[1] + 2; // Animiert Skifahrer
-        if (ski[0] > 600 && ski[1] > 600) {
-            ski[0] = -20;
-            ski[1] = 230;
-        } // Wenn Wert von Skifahrer gr��er als 600 ist, starte bei Ursprung neu.
-        drawski(ski[0], ski[1], "red");
-        window.setTimeout(animate, 20); // 20 Milisekunden warten.
     }
 })(L04 || (L04 = {}));
