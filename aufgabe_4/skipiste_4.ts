@@ -134,7 +134,7 @@ namespace L04 {
         crc2.lineTo(-800, 500);
         crc2.fill();
 
-        // Ruft die 10 Tannen an zufällig generierter Position auf.
+        // 10 Tannen an zufälliger Position zwischen 20 und 420 horizontal und 350 und 600 vertikal
         for (let i: number = 0; i < 10; i++) {
             let x: number = 20 + Math.random() * 400;
             let y: number = 350 + Math.random() * 250;
@@ -215,7 +215,7 @@ namespace L04 {
         crc2.fillStyle = _sun.color;
         crc2.fill();
 
-        if (_sun.x > 900) { _sun.x = -50; }
+        if (_sun.x > 900) { _sun.x = 0; }
 
     }
 
@@ -236,7 +236,7 @@ namespace L04 {
 
     }
     
-    // Funktion die die Tannen zeichnet.
+    // Funktion die die Tannen zeichnet und animiert.
     function drawtree(_x: number, _y: number, _color: string): void {
         //Tanne
         crc2.beginPath();

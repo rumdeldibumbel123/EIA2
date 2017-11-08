@@ -83,7 +83,7 @@ var L04;
         crc2.lineTo(800, 500);
         crc2.lineTo(-800, 500);
         crc2.fill();
-        // Ruft die 10 Tannen an zuf�llig generierter Position auf.
+        // 10 Tannen an zuf�lliger Position zwischen 20 und 420 horizontal und 350 und 600 vertikal
         for (var i = 0; i < 10; i++) {
             var x = 20 + Math.random() * 400;
             var y = 350 + Math.random() * 250;
@@ -151,7 +151,7 @@ var L04;
         crc2.fillStyle = _sun.color;
         crc2.fill();
         if (_sun.x > 900) {
-            _sun.x = -50;
+            _sun.x = 0;
         }
     }
     // Funktion die Schneeflocken zeichnet und animiert.
@@ -168,7 +168,7 @@ var L04;
             _snow.y = 0;
         }
     }
-    // Funktion die die Tannen zeichnet.
+    // Funktion die die Tannen zeichnet und animiert.
     function drawtree(_x, _y, _color) {
         //Tanne
         crc2.beginPath();
