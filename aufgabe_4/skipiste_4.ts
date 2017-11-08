@@ -164,14 +164,7 @@ namespace L04 {
         crc2.fillStyle = _color;
         crc2.fill();
     }
-    function hubhubAn(){
-        let audio : any = document.getElementById("audio");
-        audio.play()    ; // Startet Audiospur
-    }    
-     function hubhubAus(){
-        let audio : any = document.getElementById("audio");
-            
-    }   
+    
     function animate(): void {
         crc2.clearRect(0, 0, 800, 600); // Hier Hintergrund löschen.
         crc2.putImageData(hintergrund, 0, 0); // Hier Hintergrund laden.
@@ -188,6 +181,7 @@ namespace L04 {
         
         ski[0] = ski[0] + 3; // Animiert Skifahrer
         ski[1] = ski[1] + 2; // Animiert Skifahrer
+        drawski(ski[0], ski[1], "red");
 
         window.setTimeout(animate, 20); // 20 Milisekunden warten.
     }
