@@ -160,8 +160,9 @@ var L04;
         }
         ski[0] = ski[0] + 3; // Animiert Skifahrer
         ski[1] = ski[1] + 2; // Animiert Skifahrer
-        if (ski[0] > 600) {
-            ski[0] = 0;
+        if (ski[0] > 600 && ski[1] > 600) {
+            ski[0] = -20;
+            ski[1] = 230;
         } // Wenn Wert von Skifahrer gr��er als 600 ist, starte bei 0 neu.
         drawski(ski[0], ski[1], "red");
         window.setTimeout(animate, 20); // 20 Milisekunden warten.
