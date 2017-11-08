@@ -179,10 +179,10 @@ namespace L04 {
             drawsnow(snow[i - 1], snow[i], "#FFFFFF");
         }
         
-        drawski(ski[0], ski[1], "red");
         ski[0] = ski[0] + 3; // Animiert Skifahrer
         ski[1] = ski[1] + 2; // Animiert Skifahrer
-        if (ski[0] > 900) { ski[0] = 0; } // Wenn Wert von Sonne größer als 900 ist, starte bei 0 neu.
+        if (ski[0] > 600) { ski[0] = 0; } // Wenn Wert von Skifahrer größer als 600 ist, starte bei 0 neu.
+        drawski(ski[0], ski[1], "red");
         
 
         window.setTimeout(animate, 20); // 20 Milisekunden warten.
