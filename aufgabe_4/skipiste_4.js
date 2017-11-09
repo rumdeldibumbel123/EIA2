@@ -18,19 +18,19 @@ var L04;
     // Definiert die Startkoordinaten der Sonne.
     sun[0] = {
         x: -100,
-        y: Math.random() * 150,
-        dx: +3,
+        y: Math.random() * 10 + 50,
+        dx: +1,
         dy: +1,
         color: "#FFFF00"
     };
     // Definiert die variablen Startkoordinaten der Schneeflocken.
-    for (var i = 0; i < 200; i++) {
+    for (var i = 0; i < 600; i++) {
         snow[i] = {
             x: Math.random() * 800,
             y: Math.random() * 800 - 800,
-            dx: Math.random() * 1 + 1,
+            dx: Math.random() * 2 + 1,
             dy: Math.random() * 1 + 1,
-            color: "#FFFFFF"
+            color: "#DADADA"
         };
     }
     var hintergrund;
@@ -76,7 +76,7 @@ var L04;
         //Boden  
         crc2.fillStyle = "#ffffff";
         crc2.fillRect(0, 500, 800, 200);
-        //Berg
+        //Skipiste
         crc2.fillStyle = "#ffffff";
         crc2.beginPath();
         crc2.moveTo(0, 230);
@@ -110,12 +110,12 @@ var L04;
         for (var i = 0; i < ski.length; i++) {
             moveAndDrawski(ski[i]);
         }
+        // Ruft Sonne auf.
+        moveAndDrawsun(sun[0]);
         // Ruft Anzahl Schneeflocken abh�ngig der L�nge des Arrays auf.
         for (var i = 0; i < snow.length; i++) {
             moveAndDrawsnow(snow[i]);
         }
-        // Ruft Sonne auf.
-        moveAndDrawsun(sun[0]);
         // 20 Millisekunden Timeout.
         window.setTimeout(animate, 20);
     }
@@ -159,7 +159,7 @@ var L04;
         _snow.y += _snow.dy;
         crc2.beginPath();
         crc2.moveTo(_snow.x, _snow.y);
-        crc2.arc(_snow.x, _snow.y, 5, 0, 2 * Math.PI);
+        crc2.arc(_snow.x, _snow.y, 2, 0, 2 * Math.PI);
         crc2.fill();
         crc2.closePath();
         crc2.fillStyle = _snow.color;
