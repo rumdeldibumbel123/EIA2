@@ -11,28 +11,29 @@ nicht kopiert und auch nicht diktiert.
 */
 
 namespace L03 {
-    window.addEventListener("load", init); // Horcht bis die Seite geladen ist. Window ist Anzeigebereich.
-    let crc2: CanvasRenderingContext2D; // crc2 = Kurzform
+    window.addEventListener("load", init);
+    let crc2: CanvasRenderingContext2D;
 
     // Arrays
-    
-    let arrayX: number[] = []; 
+
+    let arrayX: number[] = [];
     let arrayY: number[] = [];
 
     var sun: number[] = [];
     var snow: number[] = [];
     var ski: number[] = [];
-    var stone: number[] = [500,500];
+    var stone: number[] = [500, 500];
 
     var hintergrund: any;
 
-    function init(): void { // function = Container mit eigenen Variablen, void = kein Rückgabewert
+    function init(): void {
         let canvas: HTMLCanvasElement = document.getElementsByTagName("canvas")[0];
         crc2 = canvas.getContext("2d");
-        
-        sun = [Math.random() * 400 + 40, Math.random() * 100 + 40]; // Zufällige Startkoordinaten Sonne
+
+        sun = [Math.random() * 400 + 40, Math.random() * 100 + 40];
+
         for (let i: number = 0; i < 50; i++) {
-            snow.push(Math.random() * 800, Math.random() * 600); // Zufällige Startkoordinaten Schneeflocken, push = Fügt Array Daten hinzu.
+            snow.push(Math.random() * 800, Math.random() * 600);
         }
         ski = [-20, 230]; // Startkoordinaten Skifahrer
 
@@ -96,7 +97,7 @@ namespace L03 {
             drawtree(x, y, "#004305");
         }
 
-        drawtree(100, 300, "#004305"); // Lässt Baum an fester Stelle mithilfe von Funktion erstellen.
+        drawtree(100, 300, "#004305");
         drawtree(150, 300, "#004305");
 
         //Wolke 
@@ -115,6 +116,42 @@ namespace L03 {
         animate();
     }
     
+        function animate(): void {
+        crc2.clearRect(0, 0, 800, 600); // Hier Hintergrund löschen.
+        crc2.putImageData(hintergrund, 0, 0); // Hier Hintergrund laden.
+        
+        sun[0] = sun[0] + 1; // Verschiebt Sonne um 1 in x Richtung
+        if (sun[0] > 900) { sun[0] = 0; } // Wenn Wert von Sonne größer als 900 ist, starte bei 0 neu.
+        drawsun(sun[0], sun[1], "yellow");
+        
+        for (let i: number = 0; i < 100; i++) {
+           
+            i++;
+            snow[i] = snow[i] + 1;
+            if (snow[i] > 600) { snow[i] = 0; }
+            drawsnow(snow[i - 1], snow[i], "#FFFFFF");
+            
+        }
+
+        ski[0] = ski[0] + 3; // Animiert Skifahrer
+        ski[1] = ski[1] + 2; // Animiert Skifahrer
+        if (ski[0] > 900) { ski[0] = -20; ski[1] = 230; }
+        drawski(ski[0], ski[1], "red");
+
+        if (ski[0] < stone[0]) { // Falls x Wert des Skifahrers kleiner als X Wert des Felsens...
+
+            drawstone(stone[0], stone[1], "darkgrey"); // ... dann Felsen Dunkelgrau zeichnen.
+
+        }
+
+        else if (stone[0] < ski[0]) { // Falls x Wert des Skifahrers kleiner als X Wert des Felsens...
+            drawstone(stone[0], stone[1], "red"); // ... dann Felsen Rot zeichnen.
+            hubhubAn();
+        }
+
+        window.setTimeout(animate, 20); // 20 Milisekunden warten.
+    }
+
     // Jetzt folgen Funktionen die Elemente die automatisch generiert werden sollen.
 
     function drawski(_x: number, _y: number, _color: string): void {
@@ -137,9 +174,9 @@ namespace L03 {
         //Felsen
         crc2.fillStyle = _color;
         crc2.beginPath();
-        crc2.moveTo(_x,_y);
-        crc2.lineTo(_x+100, _y+100);
-        crc2.lineTo(_x-100, _y+100);
+        crc2.moveTo(_x, _y);
+        crc2.lineTo(_x + 100, _y + 100);
+        crc2.lineTo(_x - 100, _y + 100);
         crc2.fill();
     }
 
@@ -186,49 +223,12 @@ namespace L03 {
         crc2.fillStyle = _color;
         crc2.fill();
     }
-    function hubhubAn(){
-        let audio : any = document.getElementById("audio");
-        audio.play()    ; // Startet Audiospur
-    }    
-     function hubhubAus(){
-        let audio : any = document.getElementById("audio");
-            
-    }   
-    function animate(): void {
-        crc2.clearRect(0, 0, 800, 600); // Hier Hintergrund löschen.
-        crc2.putImageData(hintergrund, 0, 0); // Hier Hintergrund laden.
-        sun[0] = sun[0] + 1; // Verschiebt Sonne um 1 in x Richtung
-        if (sun[0] > 900) { sun[0] = 0; } // Wenn Wert von Sonne größer als 900 ist, starte bei 0 neu.
-        drawsun(sun[0], sun[1], "yellow");
-        for (let i: number = 0; i < 100; i++) {
-            i++;
-
-            snow[i] = snow[i] + 1;
-            if (snow[i] > 600) { snow[i] = 0; }
-            drawsnow(snow[i - 1], snow[i], "#FFFFFF");
-        }
-        
-        ski[0] = ski[0] + 3; // Animiert Skifahrer
-        ski[1] = ski[1] + 2; // Animiert Skifahrer
-        if (ski[0] > 900) { ski[0] = -20;ski[1] = 230; }
-        drawski(ski[0], ski[1], "red");
-        
-        if (ski[0] < stone[0]) { // Falls x Wert des Skifahrers kleiner als X Wert des Felsens...
-        
-        drawstone(stone[0], stone[1], "darkgrey"); // ... dann Felsen Dunkelgrau zeichnen.
-       
-        }
-        
-        else if (stone[0] < ski[0]) { // Falls x Wert des Skifahrers kleiner als X Wert des Felsens...
-        drawstone(stone[0], stone[1], "red"); // ... dann Felsen Rot zeichnen.
-            hubhubAn();
-        }
-
-
-       
-
-        window.setTimeout(animate, 20); // 20 Milisekunden warten.
+    function hubhubAn() {
+        let audio: any = document.getElementById("audio");
+        audio.play(); // Startet Audiospur
     }
+    function hubhubAus() {
+        let audio: any = document.getElementById("audio");
+    }
+
 }
-
-

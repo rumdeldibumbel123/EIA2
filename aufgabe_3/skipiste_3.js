@@ -10,8 +10,8 @@ nicht kopiert und auch nicht diktiert.
 */
 var L03;
 (function (L03) {
-    window.addEventListener("load", init); // Horcht bis die Seite geladen ist. Window ist Anzeigebereich.
-    var crc2; // crc2 = Kurzform
+    window.addEventListener("load", init);
+    var crc2;
     // Arrays
     var arrayX = [];
     var arrayY = [];
@@ -23,9 +23,9 @@ var L03;
     function init() {
         var canvas = document.getElementsByTagName("canvas")[0];
         crc2 = canvas.getContext("2d");
-        sun = [Math.random() * 400 + 40, Math.random() * 100 + 40]; // Zuf�llige Startkoordinaten Sonne
+        sun = [Math.random() * 400 + 40, Math.random() * 100 + 40];
         for (var i = 0; i < 50; i++) {
-            snow.push(Math.random() * 800, Math.random() * 600); // Zuf�llige Startkoordinaten Schneeflocken, push = F�gt Array Daten hinzu.
+            snow.push(Math.random() * 800, Math.random() * 600);
         }
         ski = [-20, 230]; // Startkoordinaten Skifahrer
         //Himmel
@@ -79,7 +79,7 @@ var L03;
             var y = 350 + Math.random() * 250;
             drawtree(x, y, "#004305");
         }
-        drawtree(100, 300, "#004305"); // L�sst Baum an fester Stelle mithilfe von Funktion erstellen.
+        drawtree(100, 300, "#004305");
         drawtree(150, 300, "#004305");
         //Wolke 
         crc2.fillStyle = "#ffffff";
@@ -94,6 +94,38 @@ var L03;
         crc2.fill();
         hintergrund = crc2.getImageData(0, 0, 800, 600); // L�dt zuvor gel�schtes Bild wieder.
         animate();
+    }
+    function animate() {
+        crc2.clearRect(0, 0, 800, 600); // Hier Hintergrund l�schen.
+        crc2.putImageData(hintergrund, 0, 0); // Hier Hintergrund laden.
+        sun[0] = sun[0] + 1; // Verschiebt Sonne um 1 in x Richtung
+        if (sun[0] > 900) {
+            sun[0] = 0;
+        } // Wenn Wert von Sonne gr��er als 900 ist, starte bei 0 neu.
+        drawsun(sun[0], sun[1], "yellow");
+        for (var i = 0; i < 100; i++) {
+            i++;
+            snow[i] = snow[i] + 1;
+            if (snow[i] > 600) {
+                snow[i] = 0;
+            }
+            drawsnow(snow[i - 1], snow[i], "#FFFFFF");
+        }
+        ski[0] = ski[0] + 3; // Animiert Skifahrer
+        ski[1] = ski[1] + 2; // Animiert Skifahrer
+        if (ski[0] > 900) {
+            ski[0] = -20;
+            ski[1] = 230;
+        }
+        drawski(ski[0], ski[1], "red");
+        if (ski[0] < stone[0]) {
+            drawstone(stone[0], stone[1], "darkgrey"); // ... dann Felsen Dunkelgrau zeichnen.
+        }
+        else if (stone[0] < ski[0]) {
+            drawstone(stone[0], stone[1], "red"); // ... dann Felsen Rot zeichnen.
+            hubhubAn();
+        }
+        window.setTimeout(animate, 20); // 20 Milisekunden warten.
     }
     // Jetzt folgen Funktionen die Elemente die automatisch generiert werden sollen.
     function drawski(_x, _y, _color) {
@@ -167,37 +199,5 @@ var L03;
     }
     function hubhubAus() {
         var audio = document.getElementById("audio");
-    }
-    function animate() {
-        crc2.clearRect(0, 0, 800, 600); // Hier Hintergrund l�schen.
-        crc2.putImageData(hintergrund, 0, 0); // Hier Hintergrund laden.
-        sun[0] = sun[0] + 1; // Verschiebt Sonne um 1 in x Richtung
-        if (sun[0] > 900) {
-            sun[0] = 0;
-        } // Wenn Wert von Sonne gr��er als 900 ist, starte bei 0 neu.
-        drawsun(sun[0], sun[1], "yellow");
-        for (var i = 0; i < 100; i++) {
-            i++;
-            snow[i] = snow[i] + 1;
-            if (snow[i] > 600) {
-                snow[i] = 0;
-            }
-            drawsnow(snow[i - 1], snow[i], "#FFFFFF");
-        }
-        ski[0] = ski[0] + 3; // Animiert Skifahrer
-        ski[1] = ski[1] + 2; // Animiert Skifahrer
-        if (ski[0] > 900) {
-            ski[0] = -20;
-            ski[1] = 230;
-        }
-        drawski(ski[0], ski[1], "red");
-        if (ski[0] < stone[0]) {
-            drawstone(stone[0], stone[1], "darkgrey"); // ... dann Felsen Dunkelgrau zeichnen.
-        }
-        else if (stone[0] < ski[0]) {
-            drawstone(stone[0], stone[1], "red"); // ... dann Felsen Rot zeichnen.
-            hubhubAn();
-        }
-        window.setTimeout(animate, 20); // 20 Milisekunden warten.
     }
 })(L03 || (L03 = {}));
