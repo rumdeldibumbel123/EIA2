@@ -13,7 +13,7 @@ namespace L04 {
     window.addEventListener("load", init); // Horcht bis die Seite geladen ist. Window ist Anzeigebereich.
     let crc2: CanvasRenderingContext2D; // crc2 = Kurzform
 
-    interface skiinfo {
+        interface skiinfo {
         x: number;
         y: number;
         dx: number;
