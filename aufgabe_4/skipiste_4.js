@@ -1,3 +1,13 @@
+/*
+Aufgabe 4: Skipiste mit Interfaces
+Name: Daniel Sand
+Matrikel: 256649
+Datum: 9.11.2017
+
+Hiermit versichere ich, dass ich diesen
+Code selbst geschrieben habe. Er wurde
+nicht kopiert und auch nicht diktiert.
+*/
 var L04;
 (function (L04) {
     window.addEventListener("load", init); // Horcht bis die Seite geladen ist. Window ist Anzeigebereich.
