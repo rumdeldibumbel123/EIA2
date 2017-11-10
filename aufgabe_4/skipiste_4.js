@@ -13,8 +13,8 @@ var L04;
     window.addEventListener("load", init); // Horcht bis die Seite geladen ist. Window ist Anzeigebereich.
     var crc2; // crc2 = Kurzform
     var ski = [];
-    var sun = [];
     var snow = [];
+    var sun;
     // Definiert die variablen Startkoordinaten der 15 Skifahrer
     for (var i = 0; i < 15; i++) {
         ski[i] = {
@@ -26,7 +26,7 @@ var L04;
         };
     }
     // Definiert die Startkoordinaten der Sonne.
-    sun[0] = {
+    sun = {
         x: -100,
         y: Math.random() * 10 + 50,
         dx: +1,
@@ -121,7 +121,7 @@ var L04;
             moveAndDrawski(ski[i]);
         }
         // Ruft Sonne auf.
-        moveAndDrawsun(sun[0]);
+        moveAndDrawsun(sun);
         // Ruft Anzahl Schneeflocken abh�ngig der L�nge des Arrays auf.
         for (var i = 0; i < snow.length; i++) {
             moveAndDrawsnow(snow[i]);

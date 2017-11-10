@@ -13,7 +13,7 @@ namespace L04 {
     window.addEventListener("load", init); // Horcht bis die Seite geladen ist. Window ist Anzeigebereich.
     let crc2: CanvasRenderingContext2D; // crc2 = Kurzform
 
-        interface skiinfo {
+        interface object {
         x: number;
         y: number;
         dx: number;
@@ -21,25 +21,9 @@ namespace L04 {
         color: string;
     }
     
-        interface suninfo {
-        x: number;
-        y: number;
-        dx: number;
-        dy: number;
-        color: string;
-    }
-    
-        interface snowinfo {
-        x: number;
-        y: number;
-        dx: number;
-        dy: number;
-        color: string;
-    }
-    
-    let ski: skiinfo[] = [];
-    let sun: suninfo[] = [];
-    let snow: snowinfo[] = [];
+    let ski: object[] = [];
+    let snow: object[] = [];
+    let sun: object;
     
     // Definiert die variablen Startkoordinaten der 15 Skifahrer
         for (let i: number = 0; i < 15; i++) {
@@ -57,7 +41,7 @@ namespace L04 {
         }
 
     // Definiert die Startkoordinaten der Sonne.
-        sun[0] = {
+        sun = {
             
             x: -100,
             y: Math.random() * 10 +50,
@@ -176,7 +160,7 @@ namespace L04 {
         }
         
         // Ruft Sonne auf.
-        moveAndDrawsun(sun[0]);
+        moveAndDrawsun(sun);
 
         // Ruft Anzahl Schneeflocken abhängig der Länge des Arrays auf.
         for (let i: number = 0; i < snow.length; i++) {
@@ -189,7 +173,7 @@ namespace L04 {
 
     // Funktion die Skifahrer zeichnet und animiert.
 
-    function moveAndDrawski(_ski: skiinfo): void {
+    function moveAndDrawski(_ski: object): void {
 
         _ski.x += _ski.dx;
         _ski.y += _ski.dy;
@@ -212,7 +196,7 @@ namespace L04 {
     }
 
     // Funktion die Sonne zeichnet und animiert.
-    function moveAndDrawsun(_sun: suninfo): void {
+    function moveAndDrawsun(_sun: object): void {
 
         _sun.x += _sun.dx;
 
@@ -229,7 +213,7 @@ namespace L04 {
     }
 
     // Funktion die Schneeflocken zeichnet und animiert.
-    function moveAndDrawsnow(_snow: snowinfo): void {
+    function moveAndDrawsnow(_snow: object): void {
 
         _snow.y += _snow.dy;
 
