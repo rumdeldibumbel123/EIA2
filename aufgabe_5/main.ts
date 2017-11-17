@@ -1,8 +1,8 @@
 namespace L05_Class {
     export let crc2: CanvasRenderingContext2D;
 
-    let square: Square;
-    //let squares: Square[] = [];
+    let ski: Ski;
+    //let Skis: Ski[] = [];
     window.addEventListener("load", init);
 
     function init(): void {
@@ -12,14 +12,14 @@ namespace L05_Class {
         crc2 = canvas.getContext("2d");
         console.log(crc2);
 
-        square = new Square(200, 100);
-        square.setRandomStyle();
-        square.sayHello();
+        ski = new Ski(200, 100);
+        ski.setRandomStyle();
+        ski.sayHello();
         /*
                 for (let i: number = 0; i < 30; i++) {
-                    let s: Square = new Square(200, 150);
+                    let s: Ski = new Ski(200, 150);
                     s.setRandomStyle();
-                    squares[i] = s;
+                    Skis[i] = s;
                 }
         */
 
@@ -28,10 +28,10 @@ namespace L05_Class {
 
     function animate(): void {
         crc2.clearRect(0, 0, 400, 300); // hier Hintergrund restaurieren
-        square.update();
+        ski.update();
         /*
-                for (let i: number = 0; i < squares.length; i++) {
-                    let s: Square = squares[i];
+                for (let i: number = 0; i < Skis.length; i++) {
+                    let s: Ski = Skis[i];
                     s.update();
                 }
         */
