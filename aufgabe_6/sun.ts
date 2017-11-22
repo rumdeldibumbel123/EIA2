@@ -1,19 +1,10 @@
-namespace L05_Class {
-    export class Sun {
-        x: number;
-        y: number;
-        size: number;
-        color: string;
+namespace L06_Class {
+    export class Sun extends Move {
+
 
         constructor(_x: number, _y: number) {
-            this.x = _x;
-            this.y = _y;
+            super(_x, _y);
             this.color = "#FFFF00";
-        }
-        
-        update(): void {
-            this.move();
-            this.draw();
         }
 
         move(): void {

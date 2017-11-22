@@ -4,14 +4,18 @@ var L05_Class;
         function Sun(_x, _y) {
             this.x = _x;
             this.y = _y;
+            this.color = "#FFFF00";
         }
         Sun.prototype.update = function () {
             this.move();
             this.draw();
         };
         Sun.prototype.move = function () {
-            this.x += Math.random() * 1; // hier experimentieren um
+            this.x += Math.random() * 2; // hier experimentieren um
             this.y += Math.random() * 0; // andere Bewegungsmuster zu finden
+            if (this.x > 850) {
+                this.x = -100, Math.random() * 10 + 50;
+            }
         };
         Sun.prototype.draw = function () {
             L05_Class.crc2.beginPath();
@@ -21,10 +25,6 @@ var L05_Class;
             L05_Class.crc2.closePath();
             L05_Class.crc2.fillStyle = this.color;
             L05_Class.crc2.fill();
-        };
-        Sun.prototype.setRandomStyle = function () {
-            this.size = Math.random() * 30 + 10;
-            this.color = "hsl(" + Math.random() * 360 + ", 100%, 50%)";
         };
         return Sun;
     }());
