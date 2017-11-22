@@ -2,8 +2,12 @@ namespace L05_Class {
     export let crc2: CanvasRenderingContext2D;
 
     let ski: Ski;
+    let skiarray: Ski [] = [];
+    
     let sun: Sun;
+    
     let snow: Snow;
+    let snowarray: Snow [] = [];
     
     window.addEventListener("load", init);
     
@@ -68,14 +72,30 @@ namespace L05_Class {
         crc2.lineTo(800, 500);
         crc2.lineTo(-800, 500);
         crc2.fill();
+        
+                // 10 Tannen an zufälliger Position zwischen 20 und 420 horizontal und 350 und 600 vertikal
+        for (let i: number = 0; i < 3; i++) {
+            let x: number = 20 + Math.random() * 200;
+            let y: number = 350 + Math.random() * 250;
+            drawtree(x, y, "#004305");
+        }
 
         ski = new Ski(Math.random() * 700 - 700, Math.random() * 100 + 260);
-        ski.setRandomStyle();
+        
+        for (let i: number = 0; i < 10; i++) {
+            let s: Ski = new Ski(Math.random() * 700 - 700, Math.random() * 100 + 260);
+            s.setRandomStyle();
+            skiarray[i] = s;
+        }
         
         sun = new Sun(-100, Math.random() * 10 + 50);
         
         snow = new Snow(Math.random() * 800, Math.random() * 800 - 800);
-        snow.setRandomStyle();
+        
+        for (let i: number = 0; i < 300; i++) {
+            let s: Snow = new Snow(Math.random() * 800, Math.random() * 800 - 800);
+            snowarray[i] = s;
+        }
          
         hintergrund = crc2.getImageData(0, 0, 800, 600); // Lädt zuvor gelöschtes Bild wieder.
 
@@ -85,9 +105,46 @@ namespace L05_Class {
     function animate(): void {
         crc2.clearRect(0, 0, 800, 600); // hier Hintergrund restaurieren
         crc2.putImageData(hintergrund, 0, 0); // Hier Hintergrund laden.
+        
         ski.update();
+        for (let i: number = 0; i < skiarray.length; i++) {
+            let s: Ski = skiarray[i];
+            s.update();
+        }
+        
         sun.update();
+        
         snow.update();
+        
+        for (let i: number = 0; i < snowarray.length; i++) {
+            let s: Snow = snowarray[i];
+            s.update();
+        }
+        
         window.setTimeout(animate, 20);
+    }
+    
+        // Funktion die die Tannen zeichnet und animiert.
+    function drawtree(_x: number, _y: number, _color: string): void {
+        //Tanne
+        crc2.beginPath();
+        crc2.moveTo(_x, _y);
+        crc2.lineTo(_x - 10, _y + 0);
+        crc2.lineTo(_x - 10, _y - 10);
+        crc2.lineTo(_x - 20, _y - 10);
+        crc2.lineTo(_x - 10, _y - 20);
+        crc2.lineTo(_x - 20, _y - 20);
+        crc2.lineTo(_x + 0, _y - 40);
+        crc2.lineTo(_x + 20, _y - 20);
+        crc2.lineTo(_x + 10, _y - 20);
+        crc2.lineTo(_x + 20, _y - 10);
+        crc2.lineTo(_x - 10, _y - 10);
+        crc2.lineTo(_x + 10, _y - 10);
+        crc2.lineTo(_x + 10, _y + 0);
+        crc2.closePath();
+        crc2.stroke();
+        crc2.fillStyle = _color;
+        crc2.fill();
+
     }
 }

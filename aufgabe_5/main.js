@@ -1,8 +1,10 @@
 var L05_Class;
 (function (L05_Class) {
     var ski;
+    var skiarray = [];
     var sun;
     var snow;
+    var snowarray = [];
     window.addEventListener("load", init);
     var hintergrund;
     function init() {
@@ -54,11 +56,24 @@ var L05_Class;
         L05_Class.crc2.lineTo(800, 500);
         L05_Class.crc2.lineTo(-800, 500);
         L05_Class.crc2.fill();
+        // 10 Tannen an zuf�lliger Position zwischen 20 und 420 horizontal und 350 und 600 vertikal
+        for (var i = 0; i < 3; i++) {
+            var x = 20 + Math.random() * 200;
+            var y = 350 + Math.random() * 250;
+            drawtree(x, y, "#004305");
+        }
         ski = new L05_Class.Ski(Math.random() * 700 - 700, Math.random() * 100 + 260);
-        ski.setRandomStyle();
+        for (var i = 0; i < 10; i++) {
+            var s = new L05_Class.Ski(Math.random() * 700 - 700, Math.random() * 100 + 260);
+            s.setRandomStyle();
+            skiarray[i] = s;
+        }
         sun = new L05_Class.Sun(-100, Math.random() * 10 + 50);
         snow = new L05_Class.Snow(Math.random() * 800, Math.random() * 800 - 800);
-        snow.setRandomStyle();
+        for (var i = 0; i < 300; i++) {
+            var s = new L05_Class.Snow(Math.random() * 800, Math.random() * 800 - 800);
+            snowarray[i] = s;
+        }
         hintergrund = L05_Class.crc2.getImageData(0, 0, 800, 600); // L�dt zuvor gel�schtes Bild wieder.
         animate();
     }
@@ -66,8 +81,38 @@ var L05_Class;
         L05_Class.crc2.clearRect(0, 0, 800, 600); // hier Hintergrund restaurieren
         L05_Class.crc2.putImageData(hintergrund, 0, 0); // Hier Hintergrund laden.
         ski.update();
+        for (var i = 0; i < skiarray.length; i++) {
+            var s = skiarray[i];
+            s.update();
+        }
         sun.update();
         snow.update();
+        for (var i = 0; i < snowarray.length; i++) {
+            var s = snowarray[i];
+            s.update();
+        }
         window.setTimeout(animate, 20);
+    }
+    // Funktion die die Tannen zeichnet und animiert.
+    function drawtree(_x, _y, _color) {
+        //Tanne
+        L05_Class.crc2.beginPath();
+        L05_Class.crc2.moveTo(_x, _y);
+        L05_Class.crc2.lineTo(_x - 10, _y + 0);
+        L05_Class.crc2.lineTo(_x - 10, _y - 10);
+        L05_Class.crc2.lineTo(_x - 20, _y - 10);
+        L05_Class.crc2.lineTo(_x - 10, _y - 20);
+        L05_Class.crc2.lineTo(_x - 20, _y - 20);
+        L05_Class.crc2.lineTo(_x + 0, _y - 40);
+        L05_Class.crc2.lineTo(_x + 20, _y - 20);
+        L05_Class.crc2.lineTo(_x + 10, _y - 20);
+        L05_Class.crc2.lineTo(_x + 20, _y - 10);
+        L05_Class.crc2.lineTo(_x - 10, _y - 10);
+        L05_Class.crc2.lineTo(_x + 10, _y - 10);
+        L05_Class.crc2.lineTo(_x + 10, _y + 0);
+        L05_Class.crc2.closePath();
+        L05_Class.crc2.stroke();
+        L05_Class.crc2.fillStyle = _color;
+        L05_Class.crc2.fill();
     }
 })(L05_Class || (L05_Class = {}));

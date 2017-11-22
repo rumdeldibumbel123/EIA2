@@ -2,12 +2,16 @@ namespace L05_Class {
     export class Ski {
         x: number;
         y: number;
+        dx: number;
+        dy: number;
         size: number;
         color: string;
 
         constructor(_x: number, _y: number) {
             this.x = _x;
             this.y = _y;
+            this.dx = Math.random() * 1 + 3;
+            this.dy = Math.random() * 1 + 1; 
         }
         
         update(): void {
@@ -16,8 +20,14 @@ namespace L05_Class {
         }
 
         move(): void {
-            this.x += Math.random() * 4; // hier experimentieren um
-            this.y += Math.random() * 1; // andere Bewegungsmuster zu finden
+         //   this.x += Math.random() * 6; // hier experimentieren um
+         //   this.y += Math.random() * 2; // andere Bewegungsmuster zu finden
+            if (this.x > 800) {
+                this.x = Math.random() * 700 - 700;
+                this.y = Math.random() * 100 + 260;
+            }
+            this.x += this.dx;
+            this.y += this.dy;
         }
 
         draw(): void {

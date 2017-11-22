@@ -4,14 +4,22 @@ var L05_Class;
         function Ski(_x, _y) {
             this.x = _x;
             this.y = _y;
+            this.dx = Math.random() * 1 + 3;
+            this.dy = Math.random() * 1 + 1;
         }
         Ski.prototype.update = function () {
             this.move();
             this.draw();
         };
         Ski.prototype.move = function () {
-            this.x += Math.random() * 4; // hier experimentieren um
-            this.y += Math.random() * 1; // andere Bewegungsmuster zu finden
+            //   this.x += Math.random() * 6; // hier experimentieren um
+            //   this.y += Math.random() * 2; // andere Bewegungsmuster zu finden
+            if (this.x > 800) {
+                this.x = Math.random() * 700 - 700;
+                this.y = Math.random() * 100 + 260;
+            }
+            this.x += this.dx;
+            this.y += this.dy;
         };
         Ski.prototype.draw = function () {
             L05_Class.crc2.beginPath();

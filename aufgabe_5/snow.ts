@@ -2,12 +2,17 @@ namespace L05_Class {
     export class Snow {
         x: number;
         y: number;
+        dx: number;
+        dy: number;
         size: number;
         color: string;
 
         constructor(_x: number, _y: number) {
             this.x = _x;
             this.y = _y;
+            this.dx = Math.random() * 2 - 1;
+            this.dy = Math.random() * 1 + 1;
+            this.color = "#FFFFFF";
         }
         
         update(): void {
@@ -16,8 +21,12 @@ namespace L05_Class {
         }
 
         move(): void {
-            this.x += Math.random() * 3; // hier experimentieren um
-            this.y += Math.random() * 0; // andere Bewegungsmuster zu finden
+            if (this.y > 800) {
+                this.x = Math.random() * 800;
+                this.y = Math.random() * 800 - 800;
+            }
+            this.x += this.dx;
+            this.y += this.dy;
         }
 
         draw(): void {
@@ -31,9 +40,5 @@ namespace L05_Class {
         crc2.fill();
         }
 
-        setRandomStyle(): void {
-            this.size = Math.random() * 30 + 10;
-            this.color = "hsl(" + Math.random() * 360 + ", 100%, 50%)";
-        }
     }
 }
