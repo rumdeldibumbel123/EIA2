@@ -14,13 +14,13 @@ namespace L06_Class {
 
 
         constructor(_x: number, _y: number) {
-            super(_x, _y);
+            super(_x, _y); // "super": Bedeutet greif auf die Superklasse zu.
             this.color = "#FFFF00";
         }
 
         move(): void {
-            this.x += Math.random() * 2; // hier experimentieren um
-            this.y += Math.random() * 0; // andere Bewegungsmuster zu finden
+            this.x += Math.random() * 2;
+            this.y += Math.random() * 0;
             if (this.x > 850) {
                 this.x = -100, Math.random() * 10 + 50;
             }

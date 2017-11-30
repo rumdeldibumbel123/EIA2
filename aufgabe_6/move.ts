@@ -11,7 +11,7 @@ nicht kopiert und auch nicht diktiert.
 
 namespace L06_Class {
 
-    export class Move {
+    export class Move { // "export class": Bedeutet das andere Klassen auf diese zugreifen.
 
         x: number;
         y: number;

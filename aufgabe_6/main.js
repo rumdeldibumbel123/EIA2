@@ -68,38 +68,18 @@ var L06_Class;
             var y = 350 + Math.random() * 250;
             drawtree(x, y, "#004305");
         }
-        /*
-        
-        ski = new Ski(Math.random() * 700 - 700, Math.random() * 100 + 260);
-        
-        for (let i: number = 0; i < 10; i++) {
-            let s: Ski = new Ski(Math.random() * 700 - 700, Math.random() * 100 + 260);
-            s.setRandomStyle();
-            skiarray[i] = s;
-        }
-        
-        sun = new Sun(-100, Math.random() * 10 + 50);
-        
-        snow = new Snow(Math.random() * 800, Math.random() * 800 - 800);
-        
-        for (let i: number = 0; i < 300; i++) {
-            let s: Snow = new Snow(Math.random() * 800, Math.random() * 800 - 800);
-            snowarray[i] = s;
-        }
-        
-        */
         //Schleife Schnee
         for (var i = 0; i < 300; i++) {
             var c = new L06_Class.Snow(Math.random() * 800, Math.random() * 800 - 800);
-            move.push(c);
+            move.push(c); // "move.push(c): F�gt dem Array neue Daten hinzu.
         }
         for (var i = 0; i < 13; i++) {
             var c = new L06_Class.Ski(Math.random() * 700 - 700, Math.random() * 100 + 260);
-            move.push(c);
+            move.push(c); // "move.push(c): F�gt dem Array neue Daten hinzu.
         }
         for (var i = 0; i < 1; i++) {
             var c = new L06_Class.Sun(-100, Math.random() * 10 + 50);
-            move.push(c);
+            move.push(c); // "move.push(c): F�gt dem Array neue Daten hinzu.
         }
         hintergrund = L06_Class.crc2.getImageData(0, 0, 800, 600); // L�dt zuvor gel�schtes Bild wieder.
         animate();
@@ -107,26 +87,8 @@ var L06_Class;
     function animate() {
         L06_Class.crc2.clearRect(0, 0, 800, 600); // hier Hintergrund restaurieren
         L06_Class.crc2.putImageData(hintergrund, 0, 0); // Hier Hintergrund laden.
-        /*
-        
-        ski.update();
-        for (let i: number = 0; i < skiarray.length; i++) {
-            let s: Ski = skiarray[i];
-            s.update();
-        }
-        
-        sun.update();
-        
-        snow.update();
-        
-        for (let i: number = 0; i < snowarray.length; i++) {
-            let s: Snow = snowarray[i];
-            s.update();
-        }
-        
-        */
         for (var i = 0; i < move.length; i++) {
-            var s = move[i];
+            var s = move[i]; // Greift auf die aktuelle Position im Array zu um die neuen Positionen zu bestimmen.
             s.update();
         }
         window.setTimeout(animate, 20);

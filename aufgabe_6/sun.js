@@ -18,12 +18,12 @@ var L06_Class;
     var Sun = (function (_super) {
         __extends(Sun, _super);
         function Sun(_x, _y) {
-            _super.call(this, _x, _y);
+            _super.call(this, _x, _y); // "super": Bedeutet greif auf die Superklasse zu.
             this.color = "#FFFF00";
         }
         Sun.prototype.move = function () {
-            this.x += Math.random() * 2; // hier experimentieren um
-            this.y += Math.random() * 0; // andere Bewegungsmuster zu finden
+            this.x += Math.random() * 2;
+            this.y += Math.random() * 0;
             if (this.x > 850) {
                 this.x = -100, Math.random() * 10 + 50;
             }

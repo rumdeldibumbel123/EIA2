@@ -18,7 +18,7 @@ var L06_Class;
     var Snow = (function (_super) {
         __extends(Snow, _super);
         function Snow(_x, _y) {
-            _super.call(this, _x, _y);
+            _super.call(this, _x, _y); // "super": Bedeutet greif auf die Superklasse zu.
             this.dx = Math.random() * 2 - 1;
             this.dy = Math.random() * 1 + 1;
             this.color = "#FFFFFF";

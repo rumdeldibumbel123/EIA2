@@ -18,7 +18,7 @@ var L06_Class;
     var Ski = (function (_super) {
         __extends(Ski, _super);
         function Ski(_x, _y) {
-            _super.call(this, _x, _y);
+            _super.call(this, _x, _y); // "super": Bedeutet greif auf die Superklasse zu.
             this.dx = Math.random() * 2 + 3;
             this.dy = Math.random() * 1 + 1;
             this.color = "hsl(" + Math.random() * 360 + ", 100%, 50%)";

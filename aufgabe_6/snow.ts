@@ -15,7 +15,7 @@ namespace L06_Class {
         dy: number;
 
         constructor(_x: number, _y: number) {
-            super(_x, _y);
+            super(_x, _y); // "super": Bedeutet greif auf die Superklasse zu.
             this.dx = Math.random() * 2 - 1;
             this.dy = Math.random() * 1 + 1;
             this.color = "#FFFFFF";
