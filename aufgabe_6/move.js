@@ -1,3 +1,13 @@
+/*
+Aufgabe 5: Skipiste mit Klassen
+Name: Daniel Sand
+Matrikel: 256649
+Datum: 17.11.2017
+
+Hiermit versichere ich, dass ich diesen
+Code selbst geschrieben habe. Er wurde
+nicht kopiert und auch nicht diktiert.
+*/
 var L06_Class;
 (function (L06_Class) {
     var Move = (function () {

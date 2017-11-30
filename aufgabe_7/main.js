@@ -31,7 +31,7 @@ var StudiVZ;
         }
     }
     function saveData(_input) {
-        var dataArray = _input.split(","); //split gibt ein Array zur�ck
+        var dataArray = _input.split(","); // "Split" teilt den String und verteilt 5
         var studentData = {
             matrikelnummer: parseInt(dataArray[0]),
             name: dataArray[1],

@@ -1,3 +1,14 @@
+/*
+Aufgabe 6: Skipiste mit Superklassen
+Name: Daniel Sand
+Matrikel: 256649
+Datum: 17.11.2017
+
+Hiermit versichere ich, dass ich diesen
+Code selbst geschrieben habe. Er wurde
+nicht kopiert und auch nicht diktiert. 
+*/
+
 namespace L06_Class {
     export let crc2: CanvasRenderingContext2D;
     

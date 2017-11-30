@@ -44,7 +44,7 @@ namespace StudiVZ {
     }
 
     function saveData(_input: string): string {
-        let dataArray: string[] = _input.split(",");   //split gibt ein Array zurück
+        let dataArray: string[] = _input.split(",");   // "Split" teilt den String und verteilt 5
         let studentData: StudentData = {
             matrikelnummer: parseInt(dataArray[0]),          //parseInt wandelt einen String in eine Number um
             name: dataArray[1],                    //nimmt mit [1] das zweite Element aus dem Array
