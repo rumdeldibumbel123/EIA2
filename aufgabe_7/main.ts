@@ -56,12 +56,12 @@ namespace StudiVZ {
 
         students.push(studentData);
 
-        let gender: string;
+        let geschlecht: string;
         if (parseInt(dataArray[4]) == 0) {
-            gender = "weiblich";
+            geschlecht = "weiblich";
         }
         else {
-            gender = "männlich";
+            geschlecht = "männlich";
         }
 
         return "Hier hast dein Zeug. Und jetzt verschwinde!\n" + "\nMatrikelnummer: " + studentData.matrikelnummer + "\nName: " + studentData.vorname + studentData.name + "\nAlter: " + studentData.alter + "\nGeschlecht: " + + studentData.geschlecht + "\nKommentar: " + studentData.kommentar;

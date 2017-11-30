@@ -41,12 +41,12 @@ var StudiVZ;
             kommentar: dataArray[5]
         };
         students.push(studentData);
-        var gender;
+        var geschlecht;
         if (parseInt(dataArray[4]) == 0) {
-            gender = "weiblich";
+            geschlecht = "weiblich";
         }
         else {
-            gender = "m�nnlich";
+            geschlecht = "m�nnlich";
         }
         return "Hier hast dein Zeug. Und jetzt verschwinde!\n" + "\nMatrikelnummer: " + studentData.matrikelnummer + "\nName: " + studentData.vorname + studentData.name + "\nAlter: " + studentData.alter + "\nGeschlecht: " + +studentData.geschlecht + "\nKommentar: " + studentData.kommentar;
     }
