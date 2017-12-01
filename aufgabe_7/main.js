@@ -13,7 +13,7 @@ var StudiVZ;
     var students = [];
     var stop = false;
     while (!stop) {
-        var action = prompt("Was willst du tun, Alter? Zum Datensatz anlegen knall N. Zum Homie abchecken A. Bock auf nix? Knall X");
+        var action = prompt("Was willst du tun, Alter? Zum Datensatz anlegen klatsch N. Zum Homie abchecken A. Bock auf nix? Klatsch X");
         switch (action) {
             case "n":
             case "N":

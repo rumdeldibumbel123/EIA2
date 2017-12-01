@@ -24,7 +24,7 @@ namespace StudiVZ {
     var stop: boolean = false;
 
     while (!stop) {
-        var action: string = prompt("Was willst du tun, Alter? Zum Datensatz anlegen knall N. Zum Homie abchecken A. Bock auf nix? Knall X");
+        var action: string = prompt("Was willst du tun, Alter? Zum Datensatz anlegen klatsch N. Zum Homie abchecken A. Bock auf nix? Klatsch X");
 
         switch (action) {
             case "n":
