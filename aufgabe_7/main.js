@@ -56,9 +56,7 @@ var StudiVZ;
                 var geschlecht = students[i].geschlecht ? "weiblich" : "m�nnlich";
                 return "Da hast du: " + students[i].matrikelnummer + "\n\nName: " + students[i].vorname + students[i].name + "\nAlter: " + students[i].alter + "\nGeschlecht: " + geschlecht + "\nKommentar: " + students[i].kommentar;
             }
-            else {
-                return "Die Nummer gibts doch garnicht. Willst du mich verarschen?";
-            }
+            return "Die Nummer gibts doch garnicht. Willst du mich verarschen?";
         }
     }
 })(StudiVZ || (StudiVZ = {}));

@@ -73,10 +73,9 @@ namespace StudiVZ {
                 let geschlecht: string = students[i].geschlecht ? "weiblich" : "männlich";
                 return "Da hast du: " + students[i].matrikelnummer + "\n\nName: " + students[i].vorname + students[i].name + "\nAlter: " + students[i].alter + "\nGeschlecht: " + geschlecht + "\nKommentar: " + students[i].kommentar;
             }
+            
+            return "Die Nummer gibts doch garnicht. Willst du mich verarschen?";
 
-            else {
-                return "Die Nummer gibts doch garnicht. Willst du mich verarschen?";
-            }
         }
     }
 }
