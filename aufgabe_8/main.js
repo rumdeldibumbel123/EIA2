@@ -8,23 +8,29 @@ Hiermit versichere ich, dass ich diesen
 Code selbst geschrieben habe. Er wurde
 nicht kopiert und auch nicht diktiert.
 */
-var L07_DOM;
-(function (L07_DOM) {
-    window.addEventListener("load", init);
-    window.addEventListener("keydown", keypress);
-    function keypress(_event) {
-        console.log(_event.keyCode);
-    }
+var L08_DOM;
+(function (L08_DOM) {
+    window.addEventListener("load", init); // L�dt die Init Funktion
     function init() {
-        for (var i = 0; i < 200; i++) {
-            var div = document.createElement("div");
-            //console.log(h);
-            div.style.width = "40px";
-            div.style.height = "40px";
-            div.style.left = Math.random() * 1920 + "px";
-            div.style.top = Math.random() * 1080 + "px";
-            div.style.backgroundColor = "hsl(" + Math.random() * 360 + ", 100%, 50%)";
-            document.body.appendChild(div);
+        var anzahl = prompt("W�hle eine Anzahl zwischen 10 und 100 Quadraten aus die erstellt werden soll."); // "promt" = Fenster das eine Eingabe zul�sst.
+        var anzahlnummer = parseInt(anzahl); //Eingabe von String in Number umwandeln
+        if (anzahlnummer >= 10 && anzahlnummer <= 100) {
+            for (var i = 0; i < anzahlnummer; i++) {
+                draw(); //Funktionsaufruf, Parameter werden �bergeben
+            }
+        }
+        else {
+            window.alert("Lies nochmal genauer. Das war die falsche Eingabe.)"); //Bei falscher Eingabe.
+            init(); //Funktionsaufruf um Eingabe einer Zahl neu zu starten.
         }
     }
-})(L07_DOM || (L07_DOM = {}));
+    function draw() {
+        var div = document.createElement("div");
+        div.style.width = "40px";
+        div.style.height = "40px";
+        div.style.left = Math.random() * 1920 + "px";
+        div.style.top = Math.random() * 1080 + "px";
+        div.style.backgroundColor = "hsl(" + Math.random() * 360 + ", 100%, 50%)";
+        document.body.appendChild(div);
+    }
+})(L08_DOM || (L08_DOM = {}));
