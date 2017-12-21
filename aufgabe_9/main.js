@@ -8,187 +8,83 @@ Hiermit versichere ich, dass ich diesen
 Code selbst geschrieben habe. Er wurde
 nicht kopiert und auch nicht diktiert.
 */
-var L9_Erpresser;
-(function (L9_Erpresser) {
-    window.addEventListener("load", init);
-    var currentLetter;
-    document.addEventListener("keydown", keyboardPress);
+var L09_DOM;
+(function (L09_DOM) {
+    window.addEventListener("load", init); // Kontrolliert ob die DOM Datei geladen ist.
+    var buchstaben = "a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z"; //  
+    var div;
+    var dataArray = buchstaben.split(",");
+    var safeDiv; // Speichert den ausgew�hlten Buchstaben.
     function init() {
-        //Array f�r das Alphabet
-        var buchstaben = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-        var anzahl = buchstaben.length;
-        if (anzahl == buchstaben.length) {
-            for (var i = 0; i < buchstaben.length; i++) {
-                drawSquare(buchstaben[i]);
-            }
+        for (var i = 0; i < dataArray.length; i++) {
+            draw(i);
         }
-        drawLetter();
+        drawFlaeche();
     }
-    function drawSquare(_buchstaben) {
-        var square = document.createElement("div");
-        square.style.width = "30px";
-        square.style.height = "30px";
-        square.style.backgroundColor = "black";
-        square.innerText = _buchstaben;
-        square.style.marginLeft = "3px";
-        square.style.marginTop = "3px";
-        square.id = _buchstaben;
-        square.className = "letters";
-        square.addEventListener("click", handleClick);
-        document.body.appendChild(square);
+    document.addEventListener("keydown", tastenDruck); // �berpr�ft im gesamten Dokument ob eine Taste gedr�ckt wird.
+    function tastenDruck(_event) {
+        console.log(_event.key);
+        var div = document.getElementById("" + _event.key); // ID wurde in draw Funktion definiert.
+        if (safeDiv) {
+            safeDiv.style.backgroundColor = "black";
+        }
+        safeDiv = div;
+        div.style.backgroundColor = "red";
     }
-    function drawLetter() {
-        var letter = document.createElement("div");
-        letter.style.width = "855px";
-        letter.style.height = "300px";
-        letter.style.backgroundColor = "grey";
-        letter.style.border = "3px dotted black";
-        letter.style.marginLeft = "3px";
-        letter.style.marginTop = "10px";
-        letter.addEventListener("click", putLetter);
-        document.body.appendChild(letter);
+    function draw(i) {
+        div = document.createElement("div"); // Ein neues DIV Element wird generiert. Die Leiste oben mit den Buchstaben.
+        div.addEventListener("click", handle); // Wenn etwas geklickt wird, wird Funktion "handle" ausgef�hrt".
+        div.style.width = "0.5em";
+        div.id = "" + dataArray[i];
+        div.style.backgroundColor = "black";
+        div.style.color = "white";
+        div.style.marginLeft = "0.5em";
+        div.style.fontSize = "1.5em";
+        div.style.textAlign = "center";
+        div.style.cssFloat = "left";
+        div.style.padding = "0.5em";
+        div.innerHTML = dataArray[i];
+        document.body.appendChild(div); // Erstellt des neue DIV im DOM.
     }
-    function handleClick(_event) {
-        var click = _event.target;
-        click.style.backgroundColor = "pink";
-        currentLetter = click.id;
-        var divlist = document.getElementsByClassName("letters");
-        for (var i = 0; i < divlist.length; i++) {
-            if (currentLetter != divlist[i].id) {
-                divlist[i].style.backgroundColor = "black";
-            }
-        }
+    function drawFlaeche() {
+        div = document.createElement("div");
+        div.addEventListener("click", write);
+        div.style.width = "90%";
+        div.style.height = "50vh";
+        div.style.marginTop = "7em";
+        div.style.marginLeft = "5%";
+        div.style.backgroundColor = "white";
+        div.style.border = "1px solid black";
+        div.style.position = "absolute";
+        document.body.appendChild(div);
     }
-    function keyboardPress(event) {
-        if (event.key == "a" || event.key == "A") {
-            currentLetter = event.key;
-            putLetter;
+    function handle(_event) {
+        if (safeDiv) {
+            safeDiv.style.backgroundColor = "black";
         }
-        else if (event.key == "b" || event.key == "B") {
-            currentLetter = event.key;
-            putLetter;
-        }
-        else if (event.key == "c" || event.key == "C") {
-            currentLetter = event.key;
-            putLetter;
-        }
-        else if (event.key == "d" || event.key == "D") {
-            currentLetter = event.key;
-            putLetter;
-        }
-        else if (event.key == "e" || event.key == "E") {
-            currentLetter = event.key;
-            putLetter;
-        }
-        else if (event.key == "f" || event.key == "F") {
-            currentLetter = event.key;
-            putLetter;
-        }
-        else if (event.key == "g" || event.key == "G") {
-            currentLetter = event.key;
-            putLetter;
-        }
-        else if (event.key == "h" || event.key == "H") {
-            currentLetter = event.key;
-            putLetter;
-        }
-        else if (event.key == "i" || event.key == "I") {
-            currentLetter = event.key;
-            putLetter;
-        }
-        else if (event.key == "j" || event.key == "J") {
-            currentLetter = event.key;
-            putLetter;
-        }
-        else if (event.key == "k" || event.key == "K") {
-            currentLetter = event.key;
-            putLetter;
-        }
-        else if (event.key == "l" || event.key == "L") {
-            currentLetter = event.key;
-            putLetter;
-        }
-        else if (event.key == "m" || event.key == "M") {
-            currentLetter = event.key;
-            putLetter;
-        }
-        else if (event.key == "n" || event.key == "N") {
-            currentLetter = event.key;
-            putLetter;
-        }
-        else if (event.key == "o" || event.key == "O") {
-            currentLetter = event.key;
-            putLetter;
-        }
-        else if (event.key == "p" || event.key == "P") {
-            currentLetter = event.key;
-            putLetter;
-        }
-        else if (event.key == "q" || event.key == "Q") {
-            currentLetter = event.key;
-            putLetter;
-        }
-        else if (event.key == "r" || event.key == "R") {
-            currentLetter = event.key;
-            putLetter;
-        }
-        else if (event.key == "s" || event.key == "S") {
-            currentLetter = event.key;
-            putLetter;
-        }
-        else if (event.key == "t" || event.key == "T") {
-            currentLetter = event.key;
-            putLetter;
-        }
-        else if (event.key == "u" || event.key == "U") {
-            currentLetter = event.key;
-            putLetter;
-        }
-        else if (event.key == "v" || event.key == "V") {
-            currentLetter = event.key;
-            putLetter;
-        }
-        else if (event.key == "w" || event.key == "W") {
-            currentLetter = event.key;
-            putLetter;
-        }
-        else if (event.key == "x" || event.key == "X") {
-            currentLetter = event.key;
-            putLetter;
-        }
-        else if (event.key == "y" || event.key == "Y") {
-            currentLetter = event.key;
-            putLetter;
-        }
-        else if (event.key == "z" || event.key == "Z") {
-            currentLetter = event.key;
-            putLetter;
+        var div = _event.target; // target = aktuelle Auswahl.
+        safeDiv = _event.target;
+        div.style.backgroundColor = "red";
+    }
+    function write(_event) {
+        var div = document.createElement("div");
+        div.style.position = "absolute";
+        div.style.top = "" + (_event.clientY - 20) + "px"; // Zwei "" lassen Operation in string umwandeln.
+        div.style.left = "" + (_event.clientX - 20) + "px"; // "client" ist die Maus bzw. die Position an der Sie klickt.
+        div.style.width = "0.5em";
+        div.style.color = "white";
+        div.style.textAlign = "center";
+        div.style.padding = "0.5em";
+        div.style.fontSize = "1.5em";
+        div.style.backgroundColor = "hsl( " + Math.random() * 360 + ",100%,20%)";
+        div.innerHTML = safeDiv.innerHTML; // Greift auf den in der "handle" Funktion gespeicherten Buchstaben zur�ck.
+        div.addEventListener("click", deleteBuch);
+        document.body.appendChild(div); // Schreibt die FUnktion.
+    }
+    function deleteBuch(_event) {
+        if (_event.altKey) {
+            var div_1 = _event.target;
+            document.body.removeChild(div_1); // L�scht ausgew�hltes DIV wieder.
         }
     }
-    function putLetter(_event) {
-        var box = document.createElement("div");
-        box.style.width = "30px";
-        box.style.height = "30px";
-        box.style.backgroundColor = "black";
-        box.innerText = currentLetter;
-        box.style.marginLeft = "3px";
-        box.style.marginTop = "3px";
-        box.id = currentLetter;
-        box.className = "letters";
-        box.style.position = "absolute";
-        box.style.left = _event.pageX + "px";
-        box.style.top = _event.pageY + "px";
-        box.addEventListener("click", deleteLetter);
-        document.body.appendChild(box);
-        var clicking = _event.target;
-    }
-    function deleteLetter(_event) {
-        if (_event.altKey == false) {
-            return;
-        }
-        if (_event.altKey == true) {
-            var d = _event.target;
-            document.body.removeChild(d);
-        }
-    }
-})(L9_Erpresser || (L9_Erpresser = {}));
+})(L09_DOM || (L09_DOM = {}));
