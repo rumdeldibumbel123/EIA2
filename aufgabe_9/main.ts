@@ -88,7 +88,7 @@ namespace L09_DOM {
             div.style.backgroundColor = "hsl( " + Math.random() * 360 + ",100%,20%)";
             div.innerHTML = safeDiv.innerHTML; // Greift auf den in der "handle" Funktion gespeicherten Buchstaben zurück.
             div.addEventListener("click", deleteBuch);
-            document.body.appendChild(div); // Schreibt die FUnktion.
+            document.body.appendChild(div); // Schreibt die Funktion.
         }
     function deleteBuch(_event: MouseEvent){
         if(_event.altKey){ // Überprüft ob Alt Taste Gedrückt ist.
