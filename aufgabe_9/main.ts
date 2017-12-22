@@ -1,8 +1,8 @@
 /*
-Aufgabe 8: Div Elemente
+Aufgabe 9: Div Elemente
 Name: Daniel Sand
 Matrikel: 256649
-Datum: 05.12.2017
+Datum: 21.12.2017
 
 Hiermit versichere ich, dass ich diesen
 Code selbst geschrieben habe. Er wurde
