@@ -93,7 +93,7 @@ namespace Aufgabe10 {
                 stepper.type = "number";
                 stepper.name = "StepperSchmuckartikel" + i;
                 stepper.value = "0";
-                stepper.id = "stepper" + i;
+                stepper.id = "stepper" + i; // + i um jeden Stepper eine eigene ID zu geben.
                 stepper.min = "0";
                 stepper.max = "15";
                 stepper.step = "1";
@@ -111,7 +111,7 @@ namespace Aufgabe10 {
         name.type = "text";
         name.name = "DatenName";
         name.placeholder = "Name";
-        name.pattern = "[a-zA-Z]{1,}";
+        name.pattern = "[a-zA-Z]{1,}"; // pattern = Eingabemuster, [a-zA-Z] = Erlaubte Zeichen, {1,} = Mindestanzahl Zeichen
         name.required = true;        
         daten.appendChild(name);
 
@@ -187,11 +187,11 @@ namespace Aufgabe10 {
         submit.name = "Button";
         submit.type = "button";
         submit.innerText = "Bestellung überprüfen";
-        submit.addEventListener("mousedown", handleMouseDown);
+        submit.addEventListener("mousedown", handleMouseDown); // 
         button.appendChild(submit);
     }
 
-    function warenkorb(_event: Event): void {
+    function warenkorb(_event: Event): void { // eventlistener in Zweite Zeile ruft diese Funktion auf.
         let target: HTMLInputElement = <HTMLInputElement>_event.target;
         let werte: HTMLInputElement[] = [];
         let check: HTMLInputElement[] = [];
@@ -234,7 +234,7 @@ namespace Aufgabe10 {
         }
         //write
 
-        gesamtpreis = parseFloat(baumArt[1]) + parseFloat(halter[1]) + parseFloat(beleuchtungW[1]);
+        gesamtpreis = parseFloat(baumArt[1]) + parseFloat(halter[1]) + parseFloat(beleuchtungW[1]); // parseFloat = Wandelt String in Zahl mit Nachkommastellen um.
 
         korb.innerHTML += "" + baumArt[0] + " " + baumArt[1] + "€ <p></p>";
 
