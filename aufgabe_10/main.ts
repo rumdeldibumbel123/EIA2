@@ -1,6 +1,6 @@
 namespace Aufgabe10 {
-    window.addEventListener("load", createElements);
-    window.addEventListener("change", warenkorb);
+    window.addEventListener("load", createElements); // Wartet bis die Seite geladen ist und ruft dann createElements auf.
+    window.addEventListener("change", warenkorb); // Wartet darauf das etwas geändert wird und aktualisiert dann den Warenkorb.
 
     var name: HTMLInputElement;
     var strasse: HTMLInputElement;
@@ -12,7 +12,7 @@ namespace Aufgabe10 {
     var label: HTMLLabelElement;
     let checkedId: string[] = [];
     
-    var baumArt: string[] = [posten[0].name, "" + posten[0].preis];
+    var baumArt: string[] = [posten[0].name, "" + posten[0].preis]; // Standartwerte definiert. "" wandelt string in Number.
     var halter: string[] = ["kein Halter", "0"];
     var beleuchtungW: string[] = [];
     var schmuck: string[][] = [];
@@ -30,7 +30,7 @@ namespace Aufgabe10 {
         let baumart: HTMLDivElement = <HTMLDivElement>document.getElementById("baumart");
         let selectBox: HTMLSelectElement = document.createElement("select");
 
-        selectBox.name = "SelectBaumart";
+        selectBox.name = "SelectBaumart"; // .name wird als "SelectBaumart" definiert.
         selectBox.id = "selectBaumart";
         baumart.appendChild(selectBox);
 
@@ -193,7 +193,7 @@ namespace Aufgabe10 {
 
     function warenkorb(_event: Event): void { // eventlistener in Zweite Zeile ruft diese Funktion auf.
         let target: HTMLInputElement = <HTMLInputElement>_event.target;
-        let werte: HTMLInputElement[] = [];
+        let werte: HTMLInputElement[] = []; // Ohne Array würde es einen Fehler geben.
         let check: HTMLInputElement[] = [];
         let gesamtpreis: number = 0;
 

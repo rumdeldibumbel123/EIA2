@@ -1,7 +1,7 @@
 var Aufgabe10;
 (function (Aufgabe10) {
-    window.addEventListener("load", createElements);
-    window.addEventListener("change", warenkorb);
+    window.addEventListener("load", createElements); // Wartet bis die Seite geladen ist und ruft dann createElements auf.
+    window.addEventListener("change", warenkorb); // Wartet darauf das etwas ge�ndert wird und aktualisiert dann den Warenkorb.
     var name;
     var strasse;
     var hNr;
@@ -11,7 +11,7 @@ var Aufgabe10;
     var zusatz;
     var label;
     var checkedId = [];
-    var baumArt = [Aufgabe10.posten[0].name, "" + Aufgabe10.posten[0].preis];
+    var baumArt = [Aufgabe10.posten[0].name, "" + Aufgabe10.posten[0].preis]; // Standartwerte definiert. "" wandelt string in Number.
     var halter = ["kein Halter", "0"];
     var beleuchtungW = [];
     var schmuck = [];
@@ -21,7 +21,7 @@ var Aufgabe10;
         //Baumart:
         var baumart = document.getElementById("baumart");
         var selectBox = document.createElement("select");
-        selectBox.name = "SelectBaumart";
+        selectBox.name = "SelectBaumart"; // .name wird als "SelectBaumart" definiert.
         selectBox.id = "selectBaumart";
         baumart.appendChild(selectBox);
         var halterung = document.getElementById("halterung");
@@ -163,7 +163,7 @@ var Aufgabe10;
     }
     function warenkorb(_event) {
         var target = _event.target;
-        var werte = [];
+        var werte = []; // Ohne Array w�rde es einen Fehler geben.
         var check = [];
         var gesamtpreis = 0;
         var korb = document.getElementById("zusammenfassung");
